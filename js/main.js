@@ -38,7 +38,7 @@ async function refresh_data(){
 	});
 	let myPromise5 = new Promise(function(myResolve, myReject) {
 		//export data into csv
-		export_data_to_csv(dataFrameCSV);
+		//export_data_to_csv(dataFrameCSV);
 	});
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
