@@ -48,6 +48,7 @@ async function refresh_data(){
 		//plot histogram to display
 		plot_histogram();
 		plot_donut();
+		display_numbers_on_front();
 	});
 	
 	
