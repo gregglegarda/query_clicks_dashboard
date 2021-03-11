@@ -6,7 +6,7 @@ console.log("MAIN");
 *******************************************************************************************/
 
 //declare synchronous promises
-async function load_and_preprocess(){
+async function refresh_data(){
 
 
 	//***************** Declaration of Global Variables and Paths **************************
@@ -40,6 +40,14 @@ async function load_and_preprocess(){
 		//export data into csv
 		export_data_to_csv(dataFrameCSV);
 	});
+	let myPromise6 = new Promise(function(myResolve, myReject) {
+		//process ing data to be connected to front end display
+		setAndConnectVariablesToDisplay();
+	});
+	let myPromise7 = new Promise(function(myResolve, myReject) {
+		//plot histogram to display
+		plot_histogram();
+	});
 	
 	
 	//call the promises in sequence
@@ -47,86 +55,19 @@ async function load_and_preprocess(){
 	.then(myPromise2)
 	.then(myPromise3)
 	.then(myPromise4)
-	.then(myPromise5);
+	.then(myPromise5)
+	.then(myPromise6)
+	.then(myPromise7);
 
 }
 
 
 
-/*******************************************************************************************
-										Dynamic Functions
-*******************************************************************************************/
-
-//declare synchronous promises
-function refresh_data(){
-	console.log("refresh data");
-	//when refresh is called it reloads and processes everything in the synchronous function
-	load_and_preprocess();
-	
-	//process ing data to be connected to front end display
-	setAndConnectVariablesToDisplay();
-	
-	
-	//plot histogram to display
-	plot_histogram();
-	
-	//plot bar to display
-	plot_bar();
-	
-	
-
-}
-	
-
-
-
-
-/*******************************************************************************************
-										More Processing Functions
-*******************************************************************************************/
-
-function setAndConnectVariablesToDisplay(){
-	/********** Set Global Value ***********/
-	console.log("setAndConnectVariablesToDisplay");
-	//sets the  value of the global variables to be connected to the front end later
-	totalNumberOfClicks = arrayOfObjectsData.length; // sets the refresh value. on-load value is set on globaldeclarations.js
-	
-	
-	//sets count of each element in an array of objects
-	for (var each of elementArrayNames) {
-		//each is the element name, and the valueInObjectCounter function is the count of the element
-		//[each] is a new feature to set variable as the key of object.
-		arrayOfElementCounts.push({ [each] : valuetInObjectCounter("Element", each)});
-    };
 
 	
-	/********** Connect Global Value ***********/
-	// connects the global variables to the front end
-	$("#total").text(totalNumberOfClicks);
-	for (var obj of arrayOfElementCounts) {
-		for (const key in obj){
-			//$("#elementTotals"+ [key]).text(obj[key]);
-			$("#elementTotals"+ [key]).attr("data-original-title", obj[key]);
-			$("#elementTotals"+ [key]).attr("style", "height: 50%;");
-			$("#elementTotals"+ [key]).html("50%");
-
-			 
-
-
-		}
-	}
-	
-	
-}
 
 
 
-
-// counter function
-function valuetInObjectCounter(key, value){
-	let count = arrayOfObjectsData.filter(item => item[key] === value).length;
-	return count;
-}
 
 
 /*******************************************************************************************
