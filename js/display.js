@@ -136,8 +136,8 @@ var layout = {
       y: 0.5
     }
   ],
-  height: 400,
-  width: 600,
+  height: 600,
+  width: 400,
   showlegend: false,
   grid: {rows: 2, columns: 1}
 };
