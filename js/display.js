@@ -142,5 +142,5 @@ var layout = {
   grid: {rows: 1, columns: 2}
 };
 
-Plotly.newPlot('myDivDounut', data, layout);
+Plotly.newPlot('myDivDonut', data, layout);
 
