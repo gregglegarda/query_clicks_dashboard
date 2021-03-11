@@ -80,8 +80,13 @@ async function refresh_data(){
 
 //call refresh Data which has synchronous function
 window.onload = function() {
-	console.log("kapay");
-  refresh_data();
+
+
+	setTimeout(function(){
+    	console.log("kapay");
+	  	refresh_data();
+	  },1000)
+
 };
 
 
