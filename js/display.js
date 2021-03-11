@@ -97,7 +97,7 @@ function plot_donut(){
 var data = [{
   values: [16, 15, 12, 6, 5, 4, 42],
   labels: ['US', 'China', 'European Union', 'Russian Federation', 'Brazil', 'India', 'Rest of World' ],
-  domain: {column: 0},
+  domain: {row: 0},
   name: 'GHG Emissions',
   hoverinfo: 'label+percent+name',
   hole: .4,
@@ -107,7 +107,7 @@ var data = [{
   labels: ['US', 'China', 'European Union', 'Russian Federation', 'Brazil', 'India', 'Rest of World' ],
   text: 'CO2',
   textposition: 'inside',
-  domain: {column: 1},
+  domain: {row: 1},
   name: 'CO2 Emissions',
   hoverinfo: 'label+percent+name',
   hole: .4,
