@@ -115,23 +115,23 @@ var data = [{
 }];
 
 var layout = {
-  title: 'Global Emissions 1990-2011',
+  title: 'Element Click Counts',
   annotations: [
     {
       font: {
-        size: 20
+        size: 3
       },
       showarrow: false,
-      text: 'GHG',
+      text: 'Daily Average',
       x: 0.5,
       y: 0.17
     },
     {
       font: {
-        size: 20
+        size: 3
       },
       showarrow: false,
-      text: 'CO2',
+      text: 'Today\'s Clicks',
       x: 0.5,
       y: 0.82
     }
