@@ -123,8 +123,8 @@ var layout = {
       },
       showarrow: false,
       text: 'GHG',
-      x: 0.17,
-      y: 0.5
+      x: 0.5,
+      y: 0.17
     },
     {
       font: {
@@ -132,8 +132,8 @@ var layout = {
       },
       showarrow: false,
       text: 'CO2',
-      x: 0.82,
-      y: 0.5
+      x: 0.5,
+      y: 0.82
     }
   ],
   height: 600,
