@@ -119,21 +119,21 @@ var layout = {
   annotations: [
     {
       font: {
-        size: 3
+        size: 10
       },
       showarrow: false,
       text: 'Daily Average',
       x: 0.5,
-      y: 0.17
+      y: 0.5
     },
     {
       font: {
-        size: 3
+        size: 10
       },
       showarrow: false,
       text: 'Today\'s Clicks',
       x: 0.5,
-      y: 0.82
+      y: 0.5
     }
   ],
   height: 600,
