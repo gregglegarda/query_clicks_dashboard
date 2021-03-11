@@ -49,6 +49,7 @@ async function refresh_data(){
 		plot_histogram();
 		plot_donut();
 		display_numbers_on_front();
+		create_heatmap();
 	});
 	
 	
