@@ -139,7 +139,7 @@ var layout = {
   height: 400,
   width: 600,
   showlegend: false,
-  grid: {rows: 1, columns: 2}
+  grid: {rows: 2, columns: 1}
 };
 
 Plotly.newPlot('myDivDonut', data, layout);
