@@ -1,5 +1,11 @@
 console.log("DISPLAY FUNCTIONS");
 
+	/********** Connect Global Value ***********/
+	// connects the global variables to the front end
+	$("#totalclicks").text("Total Clicks: " + totalNumberOfClicks);
+	$("#avgclicks").text("Average Daily Clicks: " +avgNumberOfClicks);
+
+
 
 
 /*******************************************************************************************

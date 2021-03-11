@@ -20,6 +20,7 @@ function declare_global_variabes(){
 	
 	//front end variables (variables associated with data to be displayed in front end)
 	window.totalNumberOfClicks = 123; //for initializing the on-load number (value doesnt matter as long as its a number)
+	window.avgNumberOfClicks = 123;
 	window.arrayOfElementCounts = [];
 }
 

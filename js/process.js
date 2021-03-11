@@ -18,22 +18,6 @@ function setAndConnectVariablesToDisplay(){
     };
 
 
-	/********** Connect Global Value ***********/
-	// connects the global variables to the front end
-	$("#total").text(totalNumberOfClicks);
-	for (var obj of arrayOfElementCounts) {
-		for (const key in obj){
-			//$("#elementTotals"+ [key]).text(obj[key]);
-			$("#elementTotals"+ [key]).attr("data-original-title", obj[key]);
-			$("#elementTotals"+ [key]).attr("style", "height: 50%;");
-			$("#elementTotals"+ [key]).html("50%");
-
-
-
-
-		}
-	}
-
 
 }
 
