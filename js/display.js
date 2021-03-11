@@ -5,7 +5,7 @@ function display_numbers_on_front(){
 		/********** Connect Global Value ***********/
 	// connects the global variables to the front end
 	console.log("Total Clicks: " + typeof totalNumberOfClicks.toString());
-	$("#total").text("Total Clicks: " + totalNumberOfClicks.toString());
+	$("#total").html("Total Clicks: " + totalNumberOfClicks.toString());
 	$("#avgclicks").text("Average Daily Clicks: " +avgNumberOfClicks.toString());
 
 
