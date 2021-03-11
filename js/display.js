@@ -93,7 +93,7 @@ function plot_histogram(){
 
 
 
-
+function plot_donut(){
 var data = [{
   values: [16, 15, 12, 6, 5, 4, 42],
   labels: ['US', 'China', 'European Union', 'Russian Federation', 'Brazil', 'India', 'Rest of World' ],
@@ -141,6 +141,7 @@ var layout = {
   showlegend: false,
   grid: {rows: 2, columns: 1}
 };
+var config = {responsive: true};
+Plotly.newPlot('myDivDonut', data, layout,config);
 
-Plotly.newPlot('myDivDonut', data, layout);
-
+}

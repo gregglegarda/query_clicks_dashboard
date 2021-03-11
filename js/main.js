@@ -47,6 +47,7 @@ async function refresh_data(){
 	let myPromise7 = new Promise(function(myResolve, myReject) {
 		//plot histogram to display
 		plot_histogram();
+		plot_donut();
 	});
 	
 	
