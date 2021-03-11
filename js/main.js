@@ -83,7 +83,7 @@ window.onload = function() {
 
 
 	setTimeout(function(){
-    	console.log("kapay");
+    	console.log("kapay1");
 	  	refresh_data();
 	  },1000)
 
