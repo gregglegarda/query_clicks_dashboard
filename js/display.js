@@ -124,7 +124,7 @@ var layout = {
       showarrow: false,
       text: 'Daily Average',
       x: 0.5,
-      y: 0.25
+      y: 0.21
     },
     {
       font: {
@@ -133,7 +133,7 @@ var layout = {
       showarrow: false,
       text: 'Today\'s Clicks',
       x: 0.5,
-      y: 0.75
+      y: 0.79
     }
   ],
   height: 600,
