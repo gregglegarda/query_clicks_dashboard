@@ -15,7 +15,7 @@ var data = [{
   values: [16, 15, 12, 6, 5, 4, 42],
   labels: elementArrayNames,
   domain: {row: 0},
-  name: 'GHG Emissions',
+  name: 'Element Daily Average',
   hoverinfo: 'label+percent+name',
   hole: .4,
   type: 'pie'
