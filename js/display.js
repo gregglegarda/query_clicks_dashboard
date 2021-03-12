@@ -6,10 +6,12 @@ function display_numbers_on_front(){
 	// connects the global variables to the front end
 	console.log("Total Clicks2: " + typeof totalNumberOfClicks.toString());
 	console.log("Total Clicksaa: " + $("#total").innerText);
+	console.log(document.getElementById("total").innerText);
 
 	$("#total").innerHTML = ("Total Clicks: " + totalNumberOfClicks.toString());
 	$("#avgclicks").innerHTML = ("Average Daily Clicks: " +avgNumberOfClicks.toString());
 	console.log("Total Clicksbb: " + $("#total").innerHTML);
+	console.log(document.getElementById("total").innerHTML);
 
 
 }
