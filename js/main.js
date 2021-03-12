@@ -7,7 +7,8 @@ console.log("MAIN");
 
 //declare synchronous promises
 async function refresh_data(){
-
+	var divContent = $('#total').text();
+	console.log(divContent);
 
 	//***************** Declaration of Global Variables and Paths **************************
 	let myPromise1 = new Promise(function(myResolve, myReject) {

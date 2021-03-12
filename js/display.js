@@ -33,8 +33,8 @@ function create_trace(nameOfElement, countOfElement){
 
 		
 	}
-	console.log(x1);
-	console.log(y1);
+	//console.log(x1);
+	//console.log(y1);
 	
 	var trace1 = {
 	  x: x1,

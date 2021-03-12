@@ -51,9 +51,9 @@ async function load_data(path){
 					//let commaStringData = data.replace(/}\n{/g, "},\r\n{");  // replace }\n{ with },{ (to add commas in between)
 					stringData = ("{\"clicks\":[" + commaStringData + "]}");
 
-					console.log(JSON.stringify(data));
-					console.log("error in loaddata.js load_data function. make sure that the .log file's format is correct. or, make sure that commas are being added correctly to each '/r/n' or '/n'");
-                	alert("Loading Data Error. Fake data Loaded");
+					//console.log(JSON.stringify(data));
+					//console.log("error in loaddata.js load_data function. make sure that the .log file's format is correct. or, make sure that commas are being added correctly to each '/r/n' or '/n'");
+                	//alert("Loading Data Error. Fake data Loaded");
             }
 	});
 	console.log("load finished");
