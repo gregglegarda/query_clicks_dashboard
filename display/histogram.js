@@ -15,20 +15,20 @@ function create_trace(nameOfElement, countOfElement){
 	
 	for (var i = 0; i < countOfElement; i++) 
 	{
-	  x1.push(name);
-	  y1.push(countOfElement);
+	  x1= [name];
+	  y1 = [countOfElement];
 
 		
 	}
-	//console.log(x1);
-	//console.log(y1);
+	console.log(x1);
+	console.log(y1);
 	
 	var trace1 = {
 	  x: x1,
 	  y: y1,
 	  name: name,
-	  autobinx: false, 
-	  histnorm: "count", 
+	  autobinx: false,
+	  histnorm: "count",
 	  marker: {
 		color: "rgba(255,100,102,0.7)",
 		 line: {
@@ -63,6 +63,7 @@ function push_trace_to_array(arrayPercent){
 				data.push(sampleTrace);
 			}
 	}
+	console.log("here"+ JSON.stringify(data));
 	return data;
 }
 
@@ -71,18 +72,39 @@ function push_trace_to_array(arrayPercent){
 /************************ plot the data on the display *************************/
 function display_histogram(divName, divType, arrayPercent){
 	console.log("display_histogram (" + divName + ")");
+
+	var xObject;
+	if(divType == "Month"){
+		xObject = {title: divType};
+	}
+	else{
+		xObject = {title: divType};
+	}
+
+
+
+
 	var data = push_trace_to_array(arrayPercent);
 	var layout = {
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
 		title: divType + " Counts",
-		xaxis: {title: divType},
+		xaxis: xObject,
 		yaxis: {title: "Count"},
 		plot_bgcolor: 'rgba(0, 0, 0, 0)',
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'
 	};
+
+
+
+
+
+
 	var config = {responsive: true};
+
+
+
 	Plotly.newPlot(divName, data, layout, config);
 }
 

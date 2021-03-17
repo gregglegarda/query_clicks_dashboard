@@ -49,15 +49,21 @@ async function refresh_data(){
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
 		process_raw_values();
-		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent, element_counter);
-		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent, model_counter);
-		process_attributes("locations", arrayOfLocationNames,arrayOfLocationCounts,arrayOfLocationPercent, location_counter);
-		process_attributes("stats", arrayOfStatNames,arrayOfStatCounts,arrayOfStatPercent, stat_counter);
-
 		//process_elements();
 		//process_models();
 		//process_locations();
 		//process_stats();
+
+		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
+		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);
+		process_attributes("locations", arrayOfLocationNames,arrayOfLocationCounts,arrayOfLocationPercent);
+		process_attributes("stats", arrayOfStatNames,arrayOfStatCounts,arrayOfStatPercent);
+		process_attributes("Months", arrayOfMonthNames,arrayOfMonthCounts,arrayOfMonthPercent);
+		process_attributes("veriftype", arrayOfVeriftypeNames,arrayOfVeriftypeCounts,arrayOfVeriftypePercent);
+		process_attributes("activeTab", arrayOfActivetabNames,arrayOfActivetabCounts,arrayOfActivetabPercent);
+		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
+
+
 	});
 
 	//***************************** Display ****************************************
@@ -69,11 +75,19 @@ async function refresh_data(){
 		display_histogram("modelHistogram", "Model",arrayOfModelCounts);
 		display_histogram("locationHistogram", "Location",arrayOfLocationCounts);
 		display_histogram("statHistogram", "Stat",arrayOfStatCounts);
+		display_histogram("monthHistogram", "Month",arrayOfMonthCounts);
+		display_histogram("veriftypeHistogram", "Veriftype",arrayOfVeriftypeCounts);
+		display_histogram("activetabHistogram", "Activetab",arrayOfActivetabCounts);
+		display_histogram("aggregateHistogram", "Aggregate",arrayOfAggregateCounts);
 
 		display_donut("elementDonut", "Element", arrayOfElementPercent);
 		display_donut("modelDonut", "Model", arrayOfModelPercent);
 		display_donut("locationDonut", "Location", arrayOfLocationPercent);
 		display_donut("statDonut", "Stat", arrayOfStatPercent);
+		display_donut("monthDonut", "Month", arrayOfMonthPercent);
+		display_donut("veriftypeDonut", "Veriftype", arrayOfVeriftypePercent);
+		display_donut("activetabDonut", "Activetab", arrayOfActivetabPercent);
+		display_donut("aggregateDonut", "Aggregate", arrayOfAggregatePercent);
 
 		display_heatmap(arrayOfElementPercent, arrayOfModelPercent);
 	});

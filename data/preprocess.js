@@ -53,7 +53,7 @@ function export_data_to_csv(csvContent) {
             },
             error: function () {
 				console.log("error in preprocess.js, export_data_to_csv function, convertdatatocsv.php");
-                alert("Not Working");
+                //alert("Not Working");
             }
 	});
 

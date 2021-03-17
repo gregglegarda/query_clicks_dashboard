@@ -9,8 +9,8 @@ function display_raw_values(){
 	/********** Connect Global Value ***********/
 	// connects the global variables to the front end
 
-	$("#total").text("Total Clicks: " + totalNumberOfClicks.toString());
-	$("#avgclicks").text("Average Daily Clicks: " +avgNumberOfClicks.toString());
+	$("#total").text("Total Queries: " + totalNumberOfClicks.toString());
+	$("#avgclicks").text("Average Daily Queries: " +avgNumberOfClicks.toString());
 
 
 

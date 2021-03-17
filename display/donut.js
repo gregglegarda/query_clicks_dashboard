@@ -21,7 +21,7 @@ function display_donut(divName, donutType, arrayPercent){
 }];
 
 var layout = {
-  title: donutType + ' Click Counts',
+  title: donutType + ' Query Counts',
   annotations: [
     {
       font: {
