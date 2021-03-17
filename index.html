@@ -19,42 +19,76 @@
 
 
 
-  <div class="topnav">
-    <a class="active" href="#elements">Elements</a>
-    <a href="#models">Models</a>
-    <a href="#locations">Locations</a>
-    <a href="#stats">Stats</a>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-lg-3 col-xl-3 bordersred " >
-        <div id='myDivDonut' class = "centers" ><!-- Plotly chart will be drawn inside this DIV --></div>
-      </div>
+    <div class="topnav">
+        <a class="active" href="#elements">Elements</a>
+        <!-- <a href="#domain">Domain</a> -->
+        <a href="#models">Models</a>
+        <a href="#locations">Locations</a>
+        <a href="#stats">Stats</a>
+        <a href="#months">Months</a>
+        <a href="#veriftype">Verif Type</a>
+        <a href="#aggregate">Aggregate</a>
     </div>
-    <div class="row">
-      <div class="col-md-8 col-lg-8 col-xl-8 bordersyellow " >
-        <div id='myDiv' ><!-- Plotly chart will be drawn inside this DIV --></div>
-      </div>
+
+    <div class = "container">
+        <div>
+            <input class="button" type="button" value="Refresh Data" id="refreshButton"></input>
+        </div>
+        <div>
+            <input class="button" type="button" value="Rotate Attributes" id="rotateAttributesButton"></input>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+            <div id='elementDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+            <div id='modelDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+            <div id='locationDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+            <div id='statDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+                <div id='elementHistogram'><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+                <div id='modelHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+                <div id='locationHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+                <div id='statHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-xl-8 bordersyellow" >
+            <div id="my_dataviz" class = " bordersred"><!-- Plotly chart will be drawn inside this DIV --></div>
+          </div>
+            <div class="col-xl-4"></div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-xl-4 bordersred" >
-        <div id="my_dataviz" ><!-- Plotly chart will be drawn inside this DIV --></div>
-      </div>
-        <div class="col-xl-4"></div>
-      <div class="col-xl-4"></div>
+
+
+
+
+
+    <div class="bottomnav">
+      <a  href="#contact"><div id="total">Loading</div></a>
+      <a  href="#contact"><div id="avgclicks">Over All Queries</div></a>
+      <a href="#contact"><div>Over All Queries</div></a>
     </div>
-  </div>
-
-
-
-
-
-<div class="bottomnav">
-  <a  href="#contact"><div id="total">Loading</div></a>
-  <a  href="#contact"><div id="avgclicks">Over All Queries</div></a>
-  <a href="#contact"><div>Over All Queries</div></a>
-</div>
 
 
 
@@ -69,6 +103,7 @@
     <script  type="text/javascript" src="display/donut.js"></script>
     <script  type="text/javascript" src="display/heatmap.js"></script>
     <script  type="text/javascript" src="display/values.js"></script>
+    <script  type="text/javascript" src="ui/buttons.js"></script>
     <script   type="text/javascript" src="main.js"></script>
 
 

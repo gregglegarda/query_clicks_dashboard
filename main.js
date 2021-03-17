@@ -11,17 +11,21 @@ async function refresh_data(){
 
 	//***************** Declaration of Global Variables and Paths **************************
 	let myPromise1 = new Promise(function(myResolve, myReject) {
-		//declare global variables
-		declare_global_variabes();
-		//declare paths
-		declare_paths();
+		//globaldeclarations.js script
+		declare_paths_global();
+		declare_loading_global_variabes();
+		declare_preprocessing_global_variabes();
+		declare_processing_global_variabes();
+		declare_ui_variabes();
+
 	});
 	
 	
 	//**************************** Loading Data ********************************************
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
-		load_data(dataLogPath);
+		//load_data(dataLogPath);
+		load_data_fake(dataLogPath);
 	});
 	
 	
@@ -40,16 +44,38 @@ async function refresh_data(){
 		//export data into csv
 		//export_data_to_csv(dataFrameCSV);
 	});
+
+	//***************************** Processing ****************************************
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
-		setAndConnectVariablesToDisplay();
+		process_raw_values();
+		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent, element_counter);
+		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent, model_counter);
+		process_attributes("locations", arrayOfLocationNames,arrayOfLocationCounts,arrayOfLocationPercent, location_counter);
+		process_attributes("stats", arrayOfStatNames,arrayOfStatCounts,arrayOfStatPercent, stat_counter);
+
+		//process_elements();
+		//process_models();
+		//process_locations();
+		//process_stats();
 	});
+
+	//***************************** Display ****************************************
 	let myPromise7 = new Promise(function(myResolve, myReject) {
 		//plot histogram to display
-		plot_histogram();
-		plot_donut();
-		display_numbers_on_front();
-		create_heatmap();
+		display_raw_values();
+
+		display_histogram("elementHistogram", "Element",arrayOfElementCounts);
+		display_histogram("modelHistogram", "Model",arrayOfModelCounts);
+		display_histogram("locationHistogram", "Location",arrayOfLocationCounts);
+		display_histogram("statHistogram", "Stat",arrayOfStatCounts);
+
+		display_donut("elementDonut", "Element", arrayOfElementPercent);
+		display_donut("modelDonut", "Model", arrayOfModelPercent);
+		display_donut("locationDonut", "Location", arrayOfLocationPercent);
+		display_donut("statDonut", "Stat", arrayOfStatPercent);
+
+		display_heatmap(arrayOfElementPercent, arrayOfModelPercent);
 	});
 	
 	
@@ -67,12 +93,6 @@ async function refresh_data(){
 
 
 
-	
-
-
-
-
-
 /*******************************************************************************************
 										Main Calls
 *******************************************************************************************/
@@ -81,16 +101,13 @@ async function refresh_data(){
 //call refresh Data which has synchronous function
 window.onload = function() {
 
-
 	setTimeout(function(){
-    	console.log("kapay1");
+    	console.log("onload_function set timeout loop");
 	  	refresh_data();
-	  },1000)
+  	},1000)
+
 
 };
-
-
-//load_and_preprocess();
 
 
 

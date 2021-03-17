@@ -1,5 +1,26 @@
-console.log("PREPROCEESS");
+console.log("PREPROCESS");
 
+/*******************************************************************************************
+										PRE PROCESS TO OBJECTS
+*******************************************************************************************/
+function convert_string_to_array_of_objects(data) {
+	console.log("convert_string_to_array_of_objects ");
+
+	//parse the data string into JSON objects format and store each object into a global array
+	var jsonData = JSON.parse(data);
+	for (var i = 0; i < jsonData.clicks.length; i++) {
+		var click = jsonData.clicks[i];
+
+		//push each object into the global array
+		arrayOfObjectsData.push(click);
+	}
+
+}
+
+
+/*******************************************************************************************
+										PRE PROCESS TO CSV
+*******************************************************************************************/
 
 function export_data_to_csv(csvContent) {
 	console.log("export_data_to_csv");
@@ -17,10 +38,7 @@ function export_data_to_csv(csvContent) {
 	//save into csv file
 	var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "data.csv");
-	  
-	  
-	  
-	  
+
 	//save tocsv by calling php
 	$.ajax({
             type: 'POST',
@@ -40,6 +58,7 @@ function export_data_to_csv(csvContent) {
 	});
 
 }
+/********************************* PRE PROCESS TO TABLE FORMAT  ***************************************/
 
 function convert_array_object_to_table(array) {
 	console.log("convert_array_object_to_table");
@@ -58,21 +77,6 @@ function convert_array_object_to_table(array) {
 
 
 
-
-
-function convert_string_to_array_of_objects(data) {
-	console.log("convert_string_to_array_of_objects ");
-	
-	//parse the data string into JSON objects format and store each object into a global array
-	var jsonData = JSON.parse(data);
-	for (var i = 0; i < jsonData.clicks.length; i++) {
-		var click = jsonData.clicks[i];
-		
-		//push each object into the global array
-		arrayOfObjectsData.push(click);
-	}	
-	
-}
 
 
 
