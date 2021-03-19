@@ -30,8 +30,8 @@ async function refresh_data(){
 	//**************************** Loading Data ********************************************
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
-		//load_data(dataLogPath);
-		load_data_fake(dataLogPath);
+		load_data(dataLogPath);
+		//load_data_fake(dataLogPath);
 	});
 	
 	
@@ -74,30 +74,8 @@ async function refresh_data(){
 
 	//***************************** Display ****************************************
 	let myPromise7 = new Promise(function(myResolve, myReject) {
-		//plot histogram to display
-		display_raw_values();
-		display_table();
-
-		display_histogram("elementHistogram", "Element",arrayOfElementCounts);
-		display_histogram("modelHistogram", "Model",arrayOfModelCounts);
-		display_histogram("locationHistogram", "Location",arrayOfLocationCounts);
-		display_histogram("statHistogram", "Stat",arrayOfStatCounts);
-		display_histogram("monthHistogram", "Month",arrayOfMonthCounts);
-		display_histogram("veriftypeHistogram", "Veriftype",arrayOfVeriftypeCounts);
-		display_histogram("activetabHistogram", "Activetab",arrayOfActivetabCounts);
-		display_histogram("aggregateHistogram", "Aggregate",arrayOfAggregateCounts);
-
-		display_donut("elementDonut", "Element", arrayOfElementPercent);
-		display_donut("modelDonut", "Model", arrayOfModelPercent);
-		display_donut("locationDonut", "Location", arrayOfLocationPercent);
-		display_donut("statDonut", "Stat", arrayOfStatPercent);
-		display_donut("monthDonut", "Month", arrayOfMonthPercent);
-		display_donut("veriftypeDonut", "Veriftype", arrayOfVeriftypePercent);
-		display_donut("activetabDonut", "Activetab", arrayOfActivetabPercent);
-		display_donut("aggregateDonut", "Aggregate", arrayOfAggregatePercent);
-
-
-		display_heatmap(arrayOfElementPercent, arrayOfModelPercent);
+		//call main display
+		main_display();
 	});
 	
 	

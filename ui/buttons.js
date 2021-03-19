@@ -3,7 +3,7 @@ console.log("BUTTONS FUNCTIONS");
 										REFRESH/LIVE BUTTON Functions
 *******************************************************************************************/
 
-
+/***************************************** Clicking Refresh Button *************************************************/
 $("#refreshButton").mouseup(function(){
 	clearTimeout(pressTimer);
 	if(longPress == false && elem.value=="Turn Off Live"){
@@ -33,11 +33,14 @@ $("#refreshButton").mouseup(function(){
 	return false;
 });
 
-
+/***************************************** Hovering Refresh Button *************************************************/
 $("#refreshButton").mouseenter(function(){
-	display_snack_bar("Long Press to Turn On Live");
+	if(elem.value=="Refresh Data") {
+		display_snack_bar("Long Press to Turn On Live");
+	}
 });
 
+/***************************************** Other Refresh Button Functions *************************************************/
 function switch_button_name(a, b){
     if (elem.value==a) {
     	elem.value = b;
@@ -87,24 +90,24 @@ $("#rotateAttributesButton").click(function(){
   	var currentContainer = document.getElementById(containerAttributeNames[containerAttributePosition]);
 
 
-	  if (currentContainer.style.display === "none") {
-		currentContainer.style.display = "block";
-	  } else {
-		currentContainer.style.display = "none";
-	  }
-	  if (previousContainer.style.display === "none") {
-		previousContainer.style.display = "block";
-	  } else {
-		previousContainer.style.display = "none";
-	  }
+	if (currentContainer.style.display === "none") {
+	currentContainer.style.display = "block";
+	} else {
+	currentContainer.style.display = "none";
+	}
+	if (previousContainer.style.display === "none") {
+	previousContainer.style.display = "block";
+	} else {
+	previousContainer.style.display = "none";
+	}
 
-
+	  main_display();//display again to fit in the container
 
 })
 
 
 $("#rotateAttributesButton").mouseenter(function(){
-	display_snack_bar("Next Attribute is " + "none");
+	display_snack_bar("Next Attribute is " + containerAttributeNames[containerAttributePosition]);
 });
 
 
