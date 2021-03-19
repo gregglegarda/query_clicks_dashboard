@@ -4,19 +4,25 @@ console.log("MAIN");
 /*******************************************************************************************
 										Synchronous Functions
 *******************************************************************************************/
+//declare paths and ui outside refresh_data
+async function initialize_paths_and_ui() {
+//***************** Declaration of Paths and UI Variables **************************
+	//globaldeclarations.js script
+	declare_paths_global();
+	declare_ui_variabes();
+}
 
-//declare synchronous promises
+
+//declare synchronous promises for refreshing
 async function refresh_data(){
 
-
-	//***************** Declaration of Global Variables and Paths **************************
+	//***************** Declaration of Loading and Preprocessing Variables **************************
 	let myPromise1 = new Promise(function(myResolve, myReject) {
 		//globaldeclarations.js script
-		declare_paths_global();
 		declare_loading_global_variabes();
 		declare_preprocessing_global_variabes();
 		declare_processing_global_variabes();
-		declare_ui_variabes();
+
 
 	});
 	
@@ -116,10 +122,25 @@ async function refresh_data(){
 
 //call refresh Data which has synchronous function
 window.onload = function() {
-	setTimeout(function(){
-    	console.log("onload_function set timeout loop");
-	  	refresh_data();
-  	},1000)
+
+	let myPromiseA = new Promise(function (myResolve, myReject) {
+		//globaldeclarations.js script
+		initialize_paths_and_ui();
+	});
+	let myPromiseB = new Promise(function (myResolve, myReject) {
+		//main.js script
+		refresh_data();
+	});
+
+	//call the promises in sequence
+	myPromiseA
+	.then(myPromiseB);
+
+
+	//setTimeout(function(){
+    //	console.log("onload_function set timeout loop");
+	//  	refresh_data();
+  	//},1000)
 
 
 };

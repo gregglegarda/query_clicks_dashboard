@@ -10,6 +10,24 @@ function declare_paths_global(){
 	window.convertDataToCSVFilePath = 'data/convertdatatocsv.php';
 }
 
+/*************************************************************
+						UI Variables
+*************************************************************/
+
+function declare_ui_variabes() {
+	console.log("declare_ui_variabes");
+	//variables of refresh button
+	window.autoRefresh;
+	window.elem = document.getElementById("refreshButton");
+	window.pressTimer;
+	window.longPress = false;
+
+	//for rotation of container attributes button
+	window.containerAttributePosition = 0;
+	window.containerAttributeNames = ["mainContainer","elementsContainer","modelsContainer","locationsContainer","statsContainer", "monthsContainer", "veriftypesContainer", "activetabsContainer", "aggregatesContainer"];
+}
+
+
 
 /*************************************************************
 						Loading Variables
@@ -18,8 +36,7 @@ function declare_loading_global_variabes() {
 	console.log("declare_loading_global_variabes");
 	//variables of loading
 	window.stringData;
-	window.pressTimer;
-	window.longPress = false;
+
 
 }
 
@@ -101,20 +118,6 @@ function declare_processing_global_variabes(){
 
 
 
-/*************************************************************
-						UI Variables
-*************************************************************/
-
-function declare_ui_variabes() {
-	console.log("declare_ui_variabes");
-	//variables of ui
-	window.autoRefresh;
-	window.elem = document.getElementById("refreshButton");
-
-	//for rotation of container attributes
-	window.containerAttributePosition = 0;
-	window.containerAttributeNames = ["mainContainer","elementsContainer","modelsContainer","locationsContainer","statsContainer", "monthsContainer", "veriftypesContainer", "activetabsContainer", "aggregatesContainer"];
-}
 
 
 
