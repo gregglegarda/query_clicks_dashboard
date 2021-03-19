@@ -65,9 +65,7 @@ function array_of_objects_to_keys_and_values(array){
 		values.push(Object.values(array[i]).toString());
 		keys.push(Object.keys(array[i]).toString().toUpperCase());
 	}
-
   return [keys,values];
-
 }
 
 

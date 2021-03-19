@@ -70,6 +70,7 @@ async function refresh_data(){
 	let myPromise7 = new Promise(function(myResolve, myReject) {
 		//plot histogram to display
 		display_raw_values();
+		display_table();
 
 		display_histogram("elementHistogram", "Element",arrayOfElementCounts);
 		display_histogram("modelHistogram", "Model",arrayOfModelCounts);
@@ -88,6 +89,7 @@ async function refresh_data(){
 		display_donut("veriftypeDonut", "Veriftype", arrayOfVeriftypePercent);
 		display_donut("activetabDonut", "Activetab", arrayOfActivetabPercent);
 		display_donut("aggregateDonut", "Aggregate", arrayOfAggregatePercent);
+
 
 		display_heatmap(arrayOfElementPercent, arrayOfModelPercent);
 	});
@@ -114,7 +116,6 @@ async function refresh_data(){
 
 //call refresh Data which has synchronous function
 window.onload = function() {
-
 	setTimeout(function(){
     	console.log("onload_function set timeout loop");
 	  	refresh_data();

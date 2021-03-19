@@ -20,8 +20,8 @@ function create_trace(nameOfElement, countOfElement){
 
 		
 	}
-	console.log(x1);
-	console.log(y1);
+	//console.log(x1);
+	//console.log(y1);
 	
 	var trace1 = {
 	  x: x1,
@@ -63,7 +63,7 @@ function push_trace_to_array(arrayPercent){
 				data.push(sampleTrace);
 			}
 	}
-	console.log("here"+ JSON.stringify(data));
+	//console.log("here"+ JSON.stringify(data));
 	return data;
 }
 

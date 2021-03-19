@@ -18,7 +18,6 @@ function declare_loading_global_variabes() {
 	console.log("declare_loading_global_variabes");
 	//variables of loading
 	window.stringData;
-	window.elem = document.getElementById("refreshButton");
 	window.pressTimer;
 	window.longPress = false;
 
@@ -110,8 +109,11 @@ function declare_ui_variabes() {
 	console.log("declare_ui_variabes");
 	//variables of ui
 	window.autoRefresh;
+	window.elem = document.getElementById("refreshButton");
 
-
+	//for rotation of container attributes
+	window.containerAttributePosition = 0;
+	window.containerAttributeNames = ["mainContainer","elementsContainer","modelsContainer","locationsContainer","statsContainer", "monthsContainer", "veriftypesContainer", "activetabsContainer", "aggregatesContainer"];
 }
 
 
