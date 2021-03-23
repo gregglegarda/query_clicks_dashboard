@@ -10,7 +10,7 @@ body {
   padding: 16px;
   margin-bottom: 37px;
   margin-top: 0px;
-  background-color: grey;
+  background-color: dimgrey;
 }
 
 .row {
@@ -19,6 +19,9 @@ body {
   margin-top: 0;
   display: block;
 }
+
+div.inline { float:left; }
+.clearBoth { clear:both; }
 
 
 .centers {
@@ -173,6 +176,8 @@ body {
 
 
 
+
+/******************************* CIRCLES BAR *******************************/
 
 
 

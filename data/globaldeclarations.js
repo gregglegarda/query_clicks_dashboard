@@ -59,15 +59,23 @@ function declare_processing_global_variabes(){
 	console.log("declare_processing_global_variabes");
 	
 	//front end variables (variables associated with data to be displayed in front end)
-
 	window.totalNumberOfClicks = 0; //for initializing the on-load number (value doesnt matter as long as its a number)
 	window.avgNumberOfClicks = 0;
 	window.tempTotalOfCounts = 0;// for temporary attribute total counts in processing_attributes
 
+
+	//dates
+	//window.arrayOfDateNames;
+	window.arrayOfDateCounts = [];
+	window.totalOfDateCounts = 0;
+	window.todaysDateCounts = 0;
+	window.arrayOfDateAverage = []; // daily averages
+	window.arrayOfCumulativeDateCounts = []; // daily cumulative
+
 	//elements
 	window.arrayOfElementNames = ["cg", "cl", "dp", "mn", "mx", "po", "qpf06", "sn", "tt", "wd", "wg", "ws","wh", "vs"];
 	window.arrayOfElementCounts = [];
-	window.totalOfElementCounts = totalNumberOfClicks;
+	//window.totalOfElementCounts = totalNumberOfClicks;
 	window.arrayOfElementPercent = [];
 
 	// models

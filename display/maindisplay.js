@@ -5,6 +5,12 @@ console.log("MAIN DISPLAY FUNCTIONS");
 
 function main_display(){
 		display_raw_values();
+
+		display_circle("todayscountsDonut", "Today's Count", todaysDateCounts.toString());
+		display_circle("averagedailycountsDonut", "Average Daily Count", avgNumberOfClicks.toString());
+		display_circle("overallcountsDonut", "Overall Count", totalNumberOfClicks.toString());
+
+		display_line("querydateLine", "Querydate", arrayOfDateCounts, arrayOfDateAverage, arrayOfCumulativeDateCounts);
 		display_table();
 
 		display_histogram("elementHistogram", "Element",arrayOfElementCounts);

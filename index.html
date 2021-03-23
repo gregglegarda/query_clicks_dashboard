@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <title>NDFD Queries</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NDFD Queries</title>
 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://d3js.org/d3.v4.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
 
 
 </head>
@@ -26,8 +25,7 @@
         <div class="row">
             <input class="button" type="button" value="Next Attribute" id="rotateAttributesButton"></input>
             <div id="snackbar"></div>
-            <input class="button" type="button" value="Main" id="main"></input>
-
+            <input class="button" type="button" value="Dimensions" id="main"></input>
 
             <input class="button" type="button" value="Refresh Data" id="refreshButton"></input>
             <div id = "liveNow" style="padding: 15px 32px; display: none;"><i  class="blink"> LIVE NOW</i></div>
@@ -46,12 +44,20 @@
         <!--MAIN-->
 
         <div class="row" id="mainContainer" style="display: block;">
-            <div class="col-md-11 col-lg-11 col-xl-11 bordersyellow " >
+            <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
+                Snapshot
+                <div id='todayscountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='averagedailycountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='overallcountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            </div>
+            <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
+                  <div id='querydateLine' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            </div>
+
+            <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
                 <div id='dataTable' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
             </div>
-            <div class="col-md-1 col-lg-1 col-xl-1 bordersyellow " >
-                <div id='none' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV -->Total Queries, Average Daily Queries, Table of Data, Time series Line chart of Queries daily</div>
-            </div>
+
 
         </div>
 
@@ -155,9 +161,9 @@
 
 
     <div class="bottomnav">
-      <a  href="#contact"><div id="total">Loading</div></a>
-      <a  href="#contact"><div id="avgclicks">Over All Queries</div></a>
-      <a href="#contact"><div>Over All Queries</div></a>
+      <a  href="#"><div id="todayscount">Today's Count</div></a>
+      <a  href="#"><div id="dailyavgcount">Daily Average Count</div></a>
+      <a  href="#"><div id="overallcount">Over All Count</div></a>
     </div>
 
 
@@ -172,6 +178,8 @@
 
     <script  type="text/javascript" src="ui/buttons.js"></script>
 
+    <script  type="text/javascript" src="display/circle.js"></script>
+    <script  type="text/javascript" src="display/line.js"></script>
     <script  type="text/javascript" src="display/table.js"></script>
     <script  type="text/javascript" src="display/histogram.js"></script>
     <script  type="text/javascript" src="display/donut.js"></script>

@@ -30,8 +30,8 @@ async function refresh_data(){
 	//**************************** Loading Data ********************************************
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
-		load_data(dataLogPath);
-		//load_data_fake(dataLogPath);
+		//load_data(dataLogPath);
+		load_data_fake(dataLogPath);
 	});
 	
 	
@@ -59,7 +59,7 @@ async function refresh_data(){
 		//process_models();
 		//process_locations();
 		//process_stats();
-
+		process_dates("querydate");
 		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
 		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);
 		process_attributes("locations", arrayOfLocationNames,arrayOfLocationCounts,arrayOfLocationPercent);

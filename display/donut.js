@@ -10,46 +10,46 @@ function display_donut(divName, donutType, arrayPercent){
     var keys = pairKeyValue[0];
     var values = pairKeyValue[1];
     var data = [{
-    values: values,
-    labels: keys,
-    domain: {row: 0},
-    name: '',
-    hoverinfo: 'label+percent+name',
-    hole: .4,
-    type: 'pie'
+        values: values,
+        labels: keys,
+        domain: {row: 0},
+        name: '',
+        hoverinfo: 'label+percent+name',
+        hole: .4,
+        type: 'pie',
+        textposition: 'auto'
+    }];
 
-}];
-
-var layout = {
-  title: donutType + ' Query Counts',
-  annotations: [
-    {
-      font: {
-        size: 10
+    var layout = {
+      title: donutType + ' Query Counts',
+      annotations: [
+        {
+          font: {
+            size: 10
+          },
+          showarrow: false,
+          text: 'Overall Counts',
+          x: 0.5,
+          y: 0.5
+        }
+      ],
+        height: 300,
+        width: 200,
+        showlegend: false,
+        margin: {
+        l: 0,
+        r: 0,
+        b: 0,
+        t: 100,
+        pad: 5
       },
-      showarrow: false,
-      text: 'Overall Counts',
-      x: 0.5,
-      y: 0.5
-    }
-  ],
-    height: 300,
-    width: 200,
-    showlegend: false,
-    margin: {
-    l: 0,
-    r: 0,
-    b: 0,
-    t: 100,
-    pad: 5
-  },
-    grid: {rows: 0, columns: 0},
-    	  plot_bgcolor: 'rgba(0, 0, 0, 0)',
-		paper_bgcolor: 'rgba(0, 0, 0, 0)'
-};
+        grid: {rows: 0, columns: 0},
+              plot_bgcolor: 'rgba(0, 0, 0, 0)',
+            paper_bgcolor: 'rgba(0, 0, 0, 0)'
+    };
 
-var config = {responsive: true};
-Plotly.newPlot(divName, data, layout, config);
+    var config = {responsive: true};
+    Plotly.newPlot(divName, data, layout, config);
 
 }
 

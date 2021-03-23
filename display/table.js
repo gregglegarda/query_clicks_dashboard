@@ -21,10 +21,6 @@ function display_table(data) {
   console.log("display_table");
 
     var rows = arrayOfObjectsData;
-
-    console.log(rows);
-
-
     function unpack(rows, key) {
       return rows.map(function (row) {
         return row[key];
@@ -41,18 +37,18 @@ function display_table(data) {
       cellValue = unpack(rows, headerNames[i]);
       cellValues[i] = cellValue;
     }
-
-    // clean date
+/*
+    //clean date
     for (i = 0; i < cellValues[1].length; i++) {
       var dateValue = cellValues[1][i].split(' ')[0]
       cellValues[1][i] = dateValue
     }
-
+*/
 
     var data = [{
       type: 'table',
-      columnwidth: [1200, 400, 1600, 1600, 1200, 500, 700, 1200, 400],
-      columnorder: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      columnwidth: [1200, 1200, 400, 1600, 1600, 1200, 500, 700, 1200, 400],
+      columnorder: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       header: {
         values: headerValues,
         align: "center",

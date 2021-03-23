@@ -9,6 +9,7 @@ function process_raw_values(){
 	//sets the  value of the global variables to be connected to the front end later
 	totalNumberOfClicks = arrayOfObjectsData.length; // sets the refresh value. on-load value is set on globaldeclarations.js
 	tempTotalOfCounts = arrayOfObjectsData.length;
+
 }
 
 /*******************************************************************************************
@@ -68,6 +69,61 @@ function non_array_attribute_counter(key, value){
 	return count;
 }
 
+/*******************************************************************************************
+										PROCESS DATES
+*******************************************************************************************/
+
+function process_dates(attributeType){
+	console.log("process_"+ attributeType);
+
+	//today's date
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+	today = yyyy + '-' + mm + '-' + dd;
+
+	//putting all the dates in an array of All Dates
+	var allDatesArray = [];
+	for (const obj of arrayOfObjectsData) {
+		for (const val of obj[attributeType]) {
+			allDatesArray.push(val);
+			if (val == today){
+				todaysDateCounts++;
+			}
+		}
+	}
+
+	//creating a dictionary of the counts of each date
+	allDatesArray.reduce(function(respObj, value) {
+		value = value.substring(0, 10);
+		if (!respObj[value]) {
+			respObj[value] = {
+				[value]:1
+			};
+			arrayOfDateCounts.push(respObj[value])
+		} else {
+			respObj[value][value]++;
+		}
+		return respObj;
+	}, {});
+
+	//creating a dictionary for the average of each day. more like a moving average
+	avgNumberOfClicks = (arrayOfObjectsData.length/arrayOfDateCounts.length).toFixed(2);
+	var tempTotalDates = 0;
+	var tempPositionOfDate = 0;
+	for(var obj of arrayOfDateCounts){
+		tempPositionOfDate++;
+		tempTotalDates = tempTotalDates +Object.values(obj)[0] ;
+		console.log(JSON.stringify(Object.keys(obj)[0]));
+		arrayOfDateAverage.push({[Object.keys(obj)[0]]: tempTotalDates/tempPositionOfDate});
+		arrayOfCumulativeDateCounts.push({[Object.keys(obj)[0]]: tempTotalDates});
+	}
+	console.log(JSON.stringify(arrayOfDateAverage));
+
+
+
+}
 
 
 
