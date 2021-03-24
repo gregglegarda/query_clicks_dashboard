@@ -20,11 +20,16 @@ function display_circle(divName, donutType, value){
 }];
 
 var layout = {
-	title: donutType,
+	title: {
+		text: donutType,
+		font: {
+			size: 15,
+		}
+	},
 	annotations: [
 		{
 		  font: {
-			size: 30
+			size: 20
 		  },
 		  showarrow: false,
 		  text: value.toString(),
@@ -32,14 +37,13 @@ var layout = {
 		  y: 0.5
 		}
 	],
-	height: 300,
-	width: 200,
+	height: 150,
 	showlegend: false,
 	margin: {
 	l: 0,
 	r: 0,
-	b: 0,
-	t: 100,
+	b: 10,
+	t: 50,
 	pad: 5
 	},
 	grid: {rows: 0, columns: 0},

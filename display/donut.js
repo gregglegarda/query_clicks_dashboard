@@ -15,34 +15,38 @@ function display_donut(divName, donutType, arrayPercent){
         domain: {row: 0},
         name: '',
         hoverinfo: 'label+percent+name',
-        hole: .4,
+        hole: .6,
         type: 'pie',
         textposition: 'auto'
     }];
 
     var layout = {
-      title: donutType + ' Query Counts',
+        title: {
+            //text: donutType + ' Query Counts',
+            font: {
+                size: 15,
+            }
+	    },
       annotations: [
         {
           font: {
             size: 10
           },
           showarrow: false,
-          text: 'Overall Counts',
+          text: donutType,
           x: 0.5,
           y: 0.5
         }
       ],
         height: 300,
-        width: 200,
         showlegend: false,
         margin: {
-        l: 0,
-        r: 0,
-        b: 0,
-        t: 100,
-        pad: 5
-      },
+            l: 10,
+            r: 10,
+            b: 10,
+            t: 10,
+            pad: 5
+        },
         grid: {rows: 0, columns: 0},
               plot_bgcolor: 'rgba(0, 0, 0, 0)',
             paper_bgcolor: 'rgba(0, 0, 0, 0)'

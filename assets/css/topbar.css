@@ -1,0 +1,50 @@
+
+
+
+/******************************* TOP BAR *******************************/
+.topbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.button {
+  background-color: #1f77b4; /* #4CAF50; Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button {
+  transition-duration: 0.4s;
+}
+.button:hover {
+  background-color: #ddd; /* grey */
+  color: black;
+}
+.button:focus {
+  outline:0;
+
+}
+
+.blink {
+  animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+
+  color:red;
+  border: red solid 1px;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes blinker {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+

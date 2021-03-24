@@ -91,17 +91,17 @@ $("#rotateAttributesButton").click(function(){
 
 
 	if (currentContainer.style.display === "none") {
-	currentContainer.style.display = "block";
+	currentContainer.style.display = "";
 	} else {
 	currentContainer.style.display = "none";
 	}
 	if (previousContainer.style.display === "none") {
-	previousContainer.style.display = "block";
+	previousContainer.style.display = "";
 	} else {
 	previousContainer.style.display = "none";
 	}
 
-	  main_display();//display again to fit in the container
+	main_display();//display again to fit in the container
 
 })
 

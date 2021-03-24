@@ -30,13 +30,13 @@ function create_trace(nameOfElement, countOfElement){
 	  autobinx: false,
 	  histnorm: "count",
 	  marker: {
-		color: "rgba(255,100,102,0.7)",
+		color: "rgb(31,119,180,1)", //"rgba(255,100,102,0.7)",
 		 line: {
-		  color:  "rgba(255, 100, 102, 1)", 
+		  color:  "rgb(31,119,180,1)", //"rgba(255, 100, 102, 1)",
 		  width: 1
 		}
 	  },  
-	  opacity: 0.5, 
+	  opacity: 0.8,
 	  type: "bar", 
 	  xbins: {
 		end: 14, 
@@ -96,13 +96,7 @@ function display_histogram(divName, divType, arrayPercent){
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'
 	};
 
-
-
-
-
-
 	var config = {responsive: true};
-
 
 
 	Plotly.newPlot(divName, data, layout, config);

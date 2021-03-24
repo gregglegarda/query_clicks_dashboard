@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NDFD Queries</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/topbar.css">
+    <link rel="stylesheet" href="assets/css/bottombar.css">
+    <link rel="stylesheet" href="assets/css/snackbar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,36 +29,28 @@
             <input class="button" type="button" value="Next Attribute" id="rotateAttributesButton"></input>
             <div id="snackbar"></div>
             <input class="button" type="button" value="Dimensions" id="main"></input>
-
             <input class="button" type="button" value="Refresh Data" id="refreshButton"></input>
             <div id = "liveNow" style="padding: 15px 32px; display: none;"><i  class="blink"> LIVE NOW</i></div>
         </div>
     </div>
 
 
-
-
-
-
-
     <div class = "container">
-
 
         <!--MAIN-->
 
-        <div class="row" id="mainContainer" style="display: block;">
+        <div class="row" id="snapshotContainer" >
             <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-                Snapshot
-                <div id='todayscountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id='averagedailycountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id='overallcountsDonut' class = "bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='todayscountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='averagedailycountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='overallcountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                  <div id='querydateLine' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='querydateLine' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
             </div>
 
             <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='dataTable' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='dataTable' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
             </div>
 
 
@@ -64,80 +59,80 @@
         <!--ELEMENTS-->
         <div class="row" id="elementsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='elementDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='elementDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='elementHistogram'><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='elementHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--MODELS-->
         <div class="row" id="modelsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='modelDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='modelDonut' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='modelHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='modelHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--LOCATIONS-->
         <div class="row" id="locationsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='locationDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='locationDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='locationHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='locationHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--STATS-->
         <div class="row"  id="statsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='statDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='statDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='statHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='statHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--MONTHS-->
         <div class="row"  id="monthsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='monthDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='monthDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='monthHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='monthHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--VERIF TYPES-->
         <div class="row" id="veriftypesContainer" style="display: none;">
          <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='veriftypeDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='veriftypeDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='veriftypeHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='veriftypeHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--ACTIVE TAB-->
         <div class="row" id="activetabsContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='activetabDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='activetabDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='activetabHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='activetabHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
         <!--AGGREGATES-->
         <div class="row" id="aggregatesContainer" style="display: none;">
           <div class="col-md-3 col-lg-3 col-xl-3 bordersyellow " >
-            <div id='aggregateDonut' class = " bordersred" ><!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id='aggregateDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
           <div class="col-md-9 col-lg-9 col-xl-9 bordersyellow " >
-                <div id='aggregateHistogram' ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id='aggregateHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
         </div>
 
@@ -146,7 +141,7 @@
 <!-- HEAT MAP
         <div class="row">
           <div class="col-xl-8 bordersyellow" >
-            <div id="my_dataviz" class = " bordersred"></div>
+            <div id="my_dataviz" class = " roundedcard"></div>
           </div>
             <div class="col-xl-4"></div>
         </div>

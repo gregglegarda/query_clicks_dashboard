@@ -45,6 +45,7 @@ function display_line(divName, divType, arrayCount, arrayAverage, cumulativeCoun
      var layout = {
       title: 'History',
       height: 500,
+
       autosize: true,
       plot_bgcolor: 'rgba(0, 0, 0, 0)',
       paper_bgcolor: 'rgba(0, 0, 0, 0)'
