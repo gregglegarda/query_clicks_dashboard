@@ -45,8 +45,9 @@ function display_line(divName, divType, arrayCount, arrayAverage, cumulativeCoun
      var layout = {
       title: 'History',
       height: 500,
-
       autosize: true,
+      xaxis: {title: divType, mirror: 'ticks', linecolor: 'white', linewidth: 1},
+      yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1},
       plot_bgcolor: 'rgba(0, 0, 0, 0)',
       paper_bgcolor: 'rgba(0, 0, 0, 0)'
     };

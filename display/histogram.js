@@ -37,7 +37,7 @@ function create_trace(nameOfElement, countOfElement){
 		}
 	  },  
 	  opacity: 0.8,
-	  type: "bar", 
+	  type: "bar",
 	  xbins: {
 		end: 14, 
 		size: 0.22, 
@@ -73,25 +73,14 @@ function push_trace_to_array(arrayPercent){
 function display_histogram(divName, divType, arrayPercent){
 	console.log("display_histogram (" + divName + ")");
 
-	var xObject;
-	if(divType == "Month"){
-		xObject = {title: divType};
-	}
-	else{
-		xObject = {title: divType};
-	}
-
-
-
-
 	var data = push_trace_to_array(arrayPercent);
 	var layout = {
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
 		title: divType + " Counts",
-		xaxis: xObject,
-		yaxis: {title: "Count"},
+		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1},
+		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1},
 		plot_bgcolor: 'rgba(0, 0, 0, 0)',
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'
 	};
