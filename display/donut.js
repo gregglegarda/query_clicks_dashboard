@@ -38,7 +38,7 @@ function display_donut(divName, donutType, arrayPercent){
           y: 0.5
         }
       ],
-        height: 300,
+        height: 500,
         showlegend: false,
         margin: {
             l: 10,

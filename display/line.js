@@ -22,21 +22,21 @@ function display_line(divName, divType, arrayCount, arrayAverage, cumulativeCoun
 
 
     var trace1 = {
-        name:"daily count",
+        name:"daily",
         x: keys1,
         y: values1,
         type: 'scatter'
     };
 
     var trace2 = {
-        name:"average daily count",
+        name:"average",
         x: keys2,
         y: values2,
         type: 'scatter'
     };
 
     var trace3 = {
-        name:"cumulative count",
+        name:"cumulative",
         x: keys3,
         y: values3,
         type: 'scatter'
@@ -46,8 +46,8 @@ function display_line(divName, divType, arrayCount, arrayAverage, cumulativeCoun
       title: 'History',
       height: 500,
       autosize: true,
-      xaxis: {title: divType, mirror: 'ticks', linecolor: 'white', linewidth: 1},
-      yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1},
+      xaxis: {mirror: 'ticks', linecolor: 'white', linewidth: 1}, //title: divType,
+      yaxis: {mirror: 'ticks', linecolor: 'white',linewidth: 1}, //title: "Count",
       plot_bgcolor: 'rgba(0, 0, 0, 0)',
       paper_bgcolor: 'rgba(0, 0, 0, 0)'
     };

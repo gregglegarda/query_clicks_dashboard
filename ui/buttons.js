@@ -6,7 +6,7 @@ console.log("BUTTONS FUNCTIONS");
 /***************************************** Clicking Refresh Button *************************************************/
 $("#refreshButton").mouseup(function(){
 	clearTimeout(pressTimer);
-	if(longPress == false && elem.value=="Turn Off Live"){
+	if(longPress == false && elem.innerText=="Turn Off Live"){
 		switch_button_name("Turn Off Live", "Refresh Data");
 		auto_refresh(false);
 		live_now(false);
@@ -17,7 +17,7 @@ $("#refreshButton").mouseup(function(){
 }).mousedown(function(){
 	pressTimer = window.setTimeout(function() {
 		console.log("long press");
-		if(elem.value=="Refresh Data") {
+		if(elem.innerText=="Refresh Data") {
 			switch_button_name("Refresh Data", "Turn Off Live");
 			auto_refresh(true);
 			live_now(true);
@@ -35,18 +35,18 @@ $("#refreshButton").mouseup(function(){
 
 /***************************************** Hovering Refresh Button *************************************************/
 $("#refreshButton").mouseenter(function(){
-	if(elem.value=="Refresh Data") {
+	if(elem.innerText=="Refresh Data") {
 		display_snack_bar("Long Press to Turn On Live");
 	}
 });
 
 /***************************************** Other Refresh Button Functions *************************************************/
 function switch_button_name(a, b){
-    if (elem.value==a) {
-    	elem.value = b;
+    if (elem.innerText==a) {
+    	elem.innerText = b;
 	}
     else{
-    	elem.value = a;
+    	elem.innerText = a;
 	}
 }
 
@@ -79,13 +79,50 @@ function live_now(show){
 *******************************************************************************************/
 
 
-$("#rotateAttributesButton").click(function(){
+$("#rotateAttributesButtonNext").click(function(){
   	console.log("clicked");
+  	rotateAttributes("right");
+});
+$("#rotateAttributesButtonPrevious").click(function(){
+  	console.log("clicked");
+  	rotateAttributes("left");
+});
+
+$("#rotateAttributesButtonNext").mouseenter(function(){
+	if (containerAttributePosition == containerAttributeNames.length-1){
+		display_snack_bar("Next Attribute is " + containerAttributeNames[0]);
+	}
+	else{
+		display_snack_bar("Next Attribute is " + containerAttributeNames[containerAttributePosition+1]);
+	}
+
+});
+$("#rotateAttributesButtonPrevious").mouseenter(function(){
+	if (containerAttributePosition == 0){
+		display_snack_bar("Next Attribute is " +containerAttributeNames[containerAttributeNames.length -1]);
+	}
+	else {
+		display_snack_bar("Next Attribute is " + containerAttributeNames[containerAttributePosition - 1]);
+	}
+});
+
+function rotateAttributes(arrow){
+	console.log("clicked");
   	var previousContainer = document.getElementById(containerAttributeNames[containerAttributePosition]);
-  	containerAttributePosition++;
-  	if (containerAttributePosition == containerAttributeNames.length){
-	containerAttributePosition =0;
-  	}
+
+  	if (arrow =="right"){
+  		containerAttributePosition++;
+  		if (containerAttributePosition == containerAttributeNames.length){
+			containerAttributePosition =0;
+  		}
+	}else{
+  		if (containerAttributePosition == 0){
+			containerAttributePosition = containerAttributeNames.length;
+  		}
+  		containerAttributePosition--;
+	}
+
+
   	console.log("now in "+ containerAttributeNames[containerAttributePosition])
   	var currentContainer = document.getElementById(containerAttributeNames[containerAttributePosition]);
 
@@ -103,14 +140,7 @@ $("#rotateAttributesButton").click(function(){
 
 	main_display();//display again to fit in the container
 
-})
-
-
-$("#rotateAttributesButton").mouseenter(function(){
-	display_snack_bar("Next Attribute is " + containerAttributeNames[containerAttributePosition]);
-});
-
-
+}
 
 
 

@@ -17,8 +17,6 @@ function create_trace(nameOfElement, countOfElement){
 	{
 	  x1= [name];
 	  y1 = [countOfElement];
-
-		
 	}
 	//console.log(x1);
 	//console.log(y1);
@@ -72,15 +70,15 @@ function push_trace_to_array(arrayPercent){
 /************************ plot the data on the display *************************/
 function display_histogram(divName, divType, arrayPercent){
 	console.log("display_histogram (" + divName + ")");
-
 	var data = push_trace_to_array(arrayPercent);
 	var layout = {
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
+		height: 500,
 		title: divType + " Counts",
-		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1},
-		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1},
+		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
+		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
 		plot_bgcolor: 'rgba(0, 0, 0, 0)',
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'
 	};

@@ -19,10 +19,9 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
-.button {
   transition-duration: 0.4s;
 }
+
 .button:hover {
   background-color: #ddd; /* grey */
   color: black;
@@ -45,6 +44,11 @@
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+
+
+
+
 
 
 

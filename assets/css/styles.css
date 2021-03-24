@@ -47,12 +47,14 @@ div.inline { float:left; }
 
 .roundedcard{
   background-color: #ddd;/*light grey*/
-  border-radius: 10px;
-  margin: 10px;
+  border-radius: 5px;
+  margin: 25px;
 }
 
-.bordersyellow{
-  border: 5px solid grey;
+.roundedgroupcard{
+  border: 1px solid #333;
+  background-color: #aaa;/*light grey*/
+  border-radius: 10px;
   padding: 10px;
   margin: 0px;
 }

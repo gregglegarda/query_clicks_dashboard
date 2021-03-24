@@ -9,12 +9,12 @@ function display_table(data) {
   var tableTitle = "";
 
   var colorHeaderFill = {color: ['rgb(111, 111, 111)']};
-  var colorHeaderFont = {family: "Arial", size: 12, color: "black"};
+  var colorHeaderFont = {family: "Arial", size: 12, color: "white"};
   var colorHeaderLine = {width: 1, color: 'rgb(50, 50, 50)'};
 
   var colorCellsLine =  {color: "black", width: 1};
   var colorCellsFill = {color: ['rgba(222, 222, 222, 0.65)', 'rgb(222, 222, 222)', 'rgba(222, 222, 222, 0.65)']};
-  var colorCellsFont =  {family: "Arial", size: 9, color: ["black"]};
+  var colorCellsFont =  {family: "Arial", size: 8, color: ["black"]};
 
 
 
@@ -47,7 +47,7 @@ function display_table(data) {
 
     var data = [{
       type: 'table',
-      columnwidth: [1200, 1200, 400, 1600, 1600, 1200, 500, 700, 1200, 400],
+      columnwidth: [1000, 1200, 600, 2100, 1800, 1600, 700, 700, 2100, 600],
       columnorder: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       header: {
         values: headerValues,
@@ -64,11 +64,15 @@ function display_table(data) {
         font: colorCellsFont
       }
 
+
+
+
     }]
 
     var layout = {
       title: tableTitle,
-      height: 500,
+      height: 600,
+      borderRadius: 10,
       autosize: true,
       plot_bgcolor: 'rgba(0, 0, 0, 0)',
       paper_bgcolor: 'rgba(0, 0, 0, 0)'
