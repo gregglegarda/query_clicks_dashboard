@@ -24,24 +24,15 @@
 <body>
 
     <!--BUTTONS-->
-    <div class="topbar">
-        <div class="row">
-            <button class="button " type="button" value="Previous Attribute" id="rotateAttributesButtonPrevious"><i class="fa fa-chevron-left"></i></button>
-            <button class="button" type="button"  id="refreshButton">Refresh Data</button>
-            <button class="button " type="button" value="Next Attribute" id="rotateAttributesButtonNext"><i class="fa fa-chevron-right"></i></button>
-
+    <div class="topbar center">
+        <div class="row ">
+            <button class="button "  type="button" value="Previous Attribute" id="rotateAttributesButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+            <button class="button " type="button"  id="refreshButton">Refresh Data</button>
+            <button class="button "  type="button" value="Next Attribute" id="rotateAttributesButtonNext"><i class="fa fa-chevron-right"></i></button>
             <div id="snackbar"></div>
-
             <div id = "liveNow" style="padding: 15px 32px; display: none;"><i  class="blink"> LIVE NOW</i></div>
-
-
-
         </div>
     </div>
-
-
-
-
 
 
 
@@ -146,18 +137,17 @@
           </div>
         </div>
 
-
-
-<!-- HEAT MAP
-        <div class="row">
-          <div class="col-xl-8 roundedgroupcard" >
-            <div id="my_dataviz" class = " roundedcard"></div>
+        <!--EXTRA-->
+        <div class="row" id="extraContainer" style="display: none;">
+          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
+            <div id='my_dataviz' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
-            <div class="col-xl-4"></div>
+          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
+                <div id="todayscount">Today's Count</div>
+                <div id="dailyavgcount">Daily Average Count</div>
+                <div id="overallcount">Over All Count</div>
+          </div>
         </div>
--->
-
-
 
     </div>
 
@@ -166,9 +156,10 @@
 
 
     <div class="bottomnav">
-      <a  href="#"><div id="todayscount">Today's Count</div></a>
-      <a  href="#"><div id="dailyavgcount">Daily Average Count</div></a>
-      <a  href="#"><div id="overallcount">Over All Count</div></a>
+        <div class="row ">
+            <button class="button " id="darkmode">Dark Mode</button>
+            </div>
+
     </div>
 
 

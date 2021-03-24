@@ -24,7 +24,7 @@ function declare_ui_variabes() {
 
 	//for rotation of container attributes button
 	window.containerAttributePosition = 0;
-	window.containerAttributeNames = ["snapshotContainer","elementsContainer","modelsContainer","locationsContainer","statsContainer", "monthsContainer", "veriftypesContainer", "activetabsContainer", "aggregatesContainer"];
+	window.containerAttributeNames = ["snapshotContainer","elementsContainer","modelsContainer","locationsContainer","statsContainer", "monthsContainer", "veriftypesContainer", "activetabsContainer", "aggregatesContainer","extraContainer"];
 }
 
 

@@ -11,13 +11,12 @@
 body,html {
   margin: 0;
   font-family: 'Lato', sans-serif;
-
   background-color: #ddd; /* light grey*/
 }
 
 
 .main {
-   padding-bottom: 16px;
+  padding-bottom: 16px;
   margin-bottom: 39px;
   margin-top: 39px;
   padding-top: 16px;
@@ -38,11 +37,9 @@ body,html {
   padding: 0;
   margin-bottom: 0;
   margin-top: 0;
-  display: block;
+  display: inline;
 }
 
-div.inline { float:left; }
-.clearBoth { clear:both; }
 
 
 .roundedcard{
@@ -58,15 +55,5 @@ div.inline { float:left; }
   padding: 10px;
   margin: 0px;
 }
-
-
-
-
-
-
-
-
-
-/******************************* MAIN CONTENT *******************************/
 
 
