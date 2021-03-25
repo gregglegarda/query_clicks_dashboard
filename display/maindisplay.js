@@ -4,6 +4,7 @@ console.log("MAIN DISPLAY FUNCTIONS");
 *******************************************************************************************/
 
 function main_display(){
+
 		display_raw_values();
 
 		display_circle("todayscountsDonut", "Today's Count", todaysDateCounts.toString());
