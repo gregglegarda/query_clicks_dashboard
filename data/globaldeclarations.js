@@ -63,7 +63,6 @@ function declare_processing_global_variabes(){
 	window.avgNumberOfClicks = 0;
 	window.tempTotalOfCounts = 0;// for temporary attribute total counts in processing_attributes
 
-
 	//dates
 	//window.arrayOfDateNames;
 	window.arrayOfDateCounts = [];
@@ -121,6 +120,10 @@ function declare_processing_global_variabes(){
 	window.arrayOfAggregateCounts = [];
 	window.totalOfAggregateCounts = 0;
 	window.arrayOfAggregatePercent = [];
+
+
+	//element-verif
+	window.heatmapElementVerif =[];
 
 }
 

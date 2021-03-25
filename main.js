@@ -55,10 +55,6 @@ async function refresh_data(){
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
 		process_raw_values();
-		//process_elements();
-		//process_models();
-		//process_locations();
-		//process_stats();
 		process_dates("querydate");
 		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
 		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);
@@ -69,6 +65,7 @@ async function refresh_data(){
 		process_attributes("activeTab", arrayOfActivetabNames,arrayOfActivetabCounts,arrayOfActivetabPercent);
 		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
 
+		process_heatmaps("Element","veriftype", heatmapElementVerif);
 
 	});
 

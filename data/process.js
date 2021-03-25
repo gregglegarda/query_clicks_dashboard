@@ -115,15 +115,36 @@ function process_dates(attributeType){
 	for(var obj of arrayOfDateCounts){
 		tempPositionOfDate++;
 		tempTotalDates = tempTotalDates +Object.values(obj)[0] ;
-		console.log(JSON.stringify(Object.keys(obj)[0]));
+		//console.log(JSON.stringify(Object.keys(obj)[0]));
 		arrayOfDateAverage.push({[Object.keys(obj)[0]]: tempTotalDates/tempPositionOfDate});
 		arrayOfCumulativeDateCounts.push({[Object.keys(obj)[0]]: tempTotalDates});
 	}
-	console.log(JSON.stringify(arrayOfDateAverage));
+	//console.log(JSON.stringify(arrayOfDateAverage));
+}
 
+/*******************************************************************************************
+										PROCESS HEATMAPS
+*******************************************************************************************/
 
+function process_heatmaps(attributetypeX,attributetypeY, arrayHeatmapData){
+console.log("process_heatmaps_"+attributetypeX+"_"+attributetypeY);
+
+//putting all the x and y in an array of x and y
+	for (const obj of arrayOfObjectsData) {
+		if(arrayHeatmapData.some(arrayHeatmapData => ((arrayHeatmapData['group'] == obj[attributetypeX])&& (arrayHeatmapData['variable'] == obj[attributetypeY])))){
+			for (const objHeatmap of arrayHeatmapData) {
+				if((objHeatmap['group']==obj[attributetypeX])&&(objHeatmap['variable']==obj[attributetypeY])){
+					objHeatmap['value'] = objHeatmap['value']+1;
+				}
+			}
+		}else{
+			arrayHeatmapData.push({"group": obj[attributetypeX], "variable": obj[attributetypeY], "value":1});
+		}
+	}
+	console.log(JSON.stringify(arrayHeatmapData));
 
 }
+
 
 
 

@@ -31,7 +31,7 @@ function main_display(){
 		display_donut("activetabDonut", "Activetab", arrayOfActivetabPercent);
 		display_donut("aggregateDonut", "Aggregate", arrayOfAggregatePercent);
 
-		display_heatmap(arrayOfElementPercent, arrayOfModelPercent);
+		display_heatmap(heatmapElementVerif);
 
 }
 
