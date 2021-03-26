@@ -22,19 +22,13 @@ async function refresh_data(){
 		declare_loading_global_variabes();
 		declare_preprocessing_global_variabes();
 		declare_processing_global_variabes();
-
-
 	});
-	
-	
 	//**************************** Loading Data ********************************************
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
 		//load_data(dataLogPath);
 		load_data_fake(dataLogPath);
 	});
-	
-	
 	//***************************** Pre Processing ****************************************
 	let myPromise3 = new Promise(function(myResolve, myReject) {
 		//convert and format string data into array of objects
@@ -50,7 +44,6 @@ async function refresh_data(){
 		//export data into csv
 		//export_data_to_csv(dataFrameCSV);
 	});
-
 	//***************************** Processing ****************************************
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
@@ -66,9 +59,11 @@ async function refresh_data(){
 		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
 
 		process_heatmaps("Element","veriftype", heatmapElementVerif);
+		process_heatmaps("Element","Models", heatmapElementModel);
+		process_heatmaps("Models","locations", heatmapModelLocation);
+		process_heatmaps("Models","Months", heatmapModelMonth);
 
 	});
-
 	//***************************** Display ****************************************
 	let myPromise7 = new Promise(function(myResolve, myReject) {
 		//call main display

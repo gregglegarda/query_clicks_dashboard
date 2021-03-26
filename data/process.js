@@ -9,7 +9,6 @@ function process_raw_values(){
 	//sets the  value of the global variables to be connected to the front end later
 	totalNumberOfClicks = arrayOfObjectsData.length; // sets the refresh value. on-load value is set on globaldeclarations.js
 	tempTotalOfCounts = arrayOfObjectsData.length;
-
 }
 
 /*******************************************************************************************
@@ -19,28 +18,44 @@ function process_raw_values(){
 function process_attributes(attributeType, arrayOfNames,arrayOfCounts,arrayOfPercent){
 	console.log("process_"+ attributeType);
 
+
+	//var arrayOfNames = [];
+	for (const obj of arrayOfObjectsData) {
+		stringToArray(obj, attributeType);
+
+		obj[attributeType].forEach(function (item, index) {
+  			if (!(arrayOfNames.includes(item))){
+				console.log(JSON.stringify(item));
+				arrayOfNames.push(item);
+			}
+		});
+	}
+	console.log(JSON.stringify(arrayOfNames));
+
+
+
+
+
+
+
 	//sets count of each element in an array of objects
 	for (var each of arrayOfNames) {
-		//each is the element name, and the valueInObjectCounter function is the count of the element
-		//[each] is a new feature to set variable as the key of object.
-		if (attributeType == "Element" || attributeType == "veriftype" || attributeType == "activeTab"|| attributeType == "aggregate"){
-			arrayOfCounts.push({ [each] : non_array_attribute_counter(attributeType, each)});
-		}
-		else{
 			arrayOfCounts.push({ [each] : attribute_counter(attributeType, each)});
-		}
     };
+	console.log(JSON.stringify(arrayOfCounts));
+
+
 
 	//sets the average count of each element in an array of objects
 	for (var each of arrayOfNames) {
 		//each is the element name, and the valueInObjectCounter function is the count of the element
 		//[each] is a new feature to set variable as the key of object.
-		if (attributeType == "Element"|| attributeType == "veriftype"|| attributeType == "activeTab"|| attributeType == "aggregate"){
-			arrayOfPercent.push({[each]: non_array_attribute_counter(attributeType, each) / tempTotalOfCounts});
-		}
-		else {
+		//if (attributeType == "Element"|| attributeType == "veriftype"|| attributeType == "activeTab"|| attributeType == "aggregate"){
+			//arrayOfPercent.push({[each]: non_array_attribute_counter(attributeType, each) / tempTotalOfCounts});
+		//}
+		//else {
 			arrayOfPercent.push({[each]: attribute_counter(attributeType, each) / tempTotalOfCounts});
-		}
+		//}
     };
 }
 function attribute_counter(key, value){
@@ -48,6 +63,7 @@ function attribute_counter(key, value){
 	let count = 0;
 	for (const obj of arrayOfObjectsData) {
 		//console.log(obj[key]);
+		stringToArray(obj, key);
 		for (const val of obj[key]) {
 			//console.log(typeof  val);
 			if (val === value) {
@@ -59,6 +75,12 @@ function attribute_counter(key, value){
 	//let count = arrayOfObjectsData.filter(item => item[key] === value).length;
 	tempTotalOfCounts = totalOfCounts;
 	return count;
+}
+
+function stringToArray(ob, keyA){
+	if (typeof ob[keyA] == "string"){
+			ob[keyA] = [ob[keyA]];
+	}
 }
 
 
@@ -127,24 +149,43 @@ function process_dates(attributeType){
 *******************************************************************************************/
 
 function process_heatmaps(attributetypeX,attributetypeY, arrayHeatmapData){
-console.log("process_heatmaps_"+attributetypeX+"_"+attributetypeY);
+console.log("process_heatmaps ("+attributetypeX+"-"+attributetypeY+ ")");
 
-//putting all the x and y in an array of x and y
-	for (const obj of arrayOfObjectsData) {
+	//if array type process further
+	var tempArray=[];
+	for (var object of arrayOfObjectsData) {
+		stringToArray(object, attributetypeY);
+		stringToArray(object, attributetypeX);
+		for (var elementInX of object[attributetypeX]) {
+			for (var elementInY of object[attributetypeY]) {
+				tempArray.push({[attributetypeX]: elementInX, [attributetypeY]: elementInY});
+			}
+		}
+    };
+	//console.log("processed further"+JSON.stringify(tempArray));
+
+
+//putting all the x and y in an array of objects
+	//console.log(JSON.stringify(arrayOfObjectsData));
+	for (const obj of tempArray) {
+		//console.log(objHeatmap['variable']);
+		//console.log(obj[attributetypeY]);
+
 		if(arrayHeatmapData.some(arrayHeatmapData => ((arrayHeatmapData['group'] == obj[attributetypeX])&& (arrayHeatmapData['variable'] == obj[attributetypeY])))){
 			for (const objHeatmap of arrayHeatmapData) {
+
 				if((objHeatmap['group']==obj[attributetypeX])&&(objHeatmap['variable']==obj[attributetypeY])){
 					objHeatmap['value'] = objHeatmap['value']+1;
+
 				}
 			}
 		}else{
 			arrayHeatmapData.push({"group": obj[attributetypeX], "variable": obj[attributetypeY], "value":1});
 		}
 	}
-	console.log(JSON.stringify(arrayHeatmapData));
+	//console.log(JSON.stringify(arrayHeatmapData));
 
 }
-
 
 
 

@@ -74,10 +74,3 @@ function convert_array_object_to_table(array) {
     });
     //return dataFrameCSV;
 }
-
-
-
-
-
-
-

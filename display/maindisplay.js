@@ -6,13 +6,14 @@ console.log("MAIN DISPLAY FUNCTIONS");
 function main_display(){
 
 		display_raw_values();
+		display_table();
 
 		display_circle("todayscountsDonut", "Today's Count", todaysDateCounts.toString());
 		display_circle("averagedailycountsDonut", "Average Daily Count", avgNumberOfClicks.toString());
 		display_circle("overallcountsDonut", "Overall Count", totalNumberOfClicks.toString());
 
 		display_line("querydateLine", "Querydate", arrayOfDateCounts, arrayOfDateAverage, arrayOfCumulativeDateCounts);
-		display_table();
+
 
 		display_histogram("elementHistogram", "Element",arrayOfElementCounts);
 		display_histogram("modelHistogram", "Model",arrayOfModelCounts);
@@ -32,7 +33,11 @@ function main_display(){
 		display_donut("activetabDonut", "Activetab", arrayOfActivetabPercent);
 		display_donut("aggregateDonut", "Aggregate", arrayOfAggregatePercent);
 
-		display_heatmap(heatmapElementVerif);
+
+		display_heatmap('heatmapElementVeriftype', heatmapElementVerif,arrayOfElementNames,arrayOfVeriftypeNames);
+		display_heatmap('heatmapElementModel', heatmapElementModel,arrayOfElementNames,arrayOfModelNames);
+		display_heatmap('heatmapModelLocation', heatmapModelLocation,arrayOfModelNames,arrayOfLocationNames);
+		display_heatmap('heatmapModelMonth', heatmapModelMonth,arrayOfModelNames,arrayOfMonthNames);
 
 }
 
