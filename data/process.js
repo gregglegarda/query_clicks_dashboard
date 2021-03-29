@@ -22,27 +22,18 @@ function process_attributes(attributeType, arrayOfNames,arrayOfCounts,arrayOfPer
 	//var arrayOfNames = [];
 	for (const obj of arrayOfObjectsData) {
 		stringToArray(obj, attributeType);
-
 		obj[attributeType].forEach(function (item, index) {
   			if (!(arrayOfNames.includes(item))){
-				console.log(JSON.stringify(item));
 				arrayOfNames.push(item);
 			}
 		});
 	}
-	console.log(JSON.stringify(arrayOfNames));
-
-
-
-
-
 
 
 	//sets count of each element in an array of objects
 	for (var each of arrayOfNames) {
 			arrayOfCounts.push({ [each] : attribute_counter(attributeType, each)});
     };
-	console.log(JSON.stringify(arrayOfCounts));
 
 
 

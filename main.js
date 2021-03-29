@@ -27,7 +27,10 @@ async function refresh_data(){
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
 		//load_data(dataLogPath);
-		load_data_fake(dataLogPath);
+		//load_data_0(dataLogPath);
+		//load_data_1(dataLogPath);
+		//load_data_some(dataLogPath);
+		load_data_many(dataLogPath);
 	});
 	//***************************** Pre Processing ****************************************
 	let myPromise3 = new Promise(function(myResolve, myReject) {
@@ -58,10 +61,72 @@ async function refresh_data(){
 		process_attributes("activeTab", arrayOfActivetabNames,arrayOfActivetabCounts,arrayOfActivetabPercent);
 		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
 
-		process_heatmaps("Element","veriftype", heatmapElementVerif);
+
 		process_heatmaps("Element","Models", heatmapElementModel);
+		process_heatmaps("Element","locations", heatmapElementLocation);
+		process_heatmaps("Element","stats", heatmapElementStat);
+		process_heatmaps("Element","Months", heatmapElementMonth);
+		process_heatmaps("Element","veriftype", heatmapElementVeriftype);
+		process_heatmaps("Element","activeTab", heatmapElementActivetab);
+		process_heatmaps("Element","aggregate", heatmapElementAggregate);
+
+		process_heatmaps("Models","Element", heatmapModelElement);
 		process_heatmaps("Models","locations", heatmapModelLocation);
+		process_heatmaps("Models","stats", heatmapModelStat);
 		process_heatmaps("Models","Months", heatmapModelMonth);
+		process_heatmaps("Models","veriftype", heatmapModelVeriftype);
+		process_heatmaps("Models","activeTab", heatmapModelActivetab);
+		process_heatmaps("Models","aggregate", heatmapModelAggregate);
+
+		process_heatmaps("locations","Element", heatmapLocationElement);
+		process_heatmaps("locations","Models", heatmapLocationModel);
+		process_heatmaps("locations","stats", heatmapLocationStat);
+		process_heatmaps("locations","Months", heatmapLocationMonth);
+		process_heatmaps("locations","veriftype", heatmapLocationVeriftype);
+		process_heatmaps("locations","activeTab", heatmapLocationActivetab);
+		process_heatmaps("locations","aggregate", heatmapLocationAggregate);
+
+		process_heatmaps("stats","Element", heatmapStatElement);
+		process_heatmaps("stats","Models", heatmapStatModel);
+		process_heatmaps("stats","locations", heatmapStatLocation);
+		process_heatmaps("stats","Months", heatmapStatMonth);
+		process_heatmaps("stats","veriftype", heatmapStatVeriftype);
+		process_heatmaps("stats","activeTab", heatmapStatActivetab);
+		process_heatmaps("stats","aggregate", heatmapStatAggregate);
+
+		process_heatmaps("Months","Element", heatmapMonthElement);
+		process_heatmaps("Months","Models", heatmapMonthModel);
+		process_heatmaps("Months","locations", heatmapMonthLocation);
+		process_heatmaps("Months","stats", heatmapMonthStat);
+		process_heatmaps("Months","veriftype", heatmapMonthVeriftype);
+		process_heatmaps("Months","activeTab", heatmapMonthActivetab);
+		process_heatmaps("Months","aggregate", heatmapMonthAggregate);
+
+		process_heatmaps("veriftype","Element", heatmapVeriftypeElement);
+		process_heatmaps("veriftype","Models", heatmapVeriftypeModel);
+		process_heatmaps("veriftype","locations", heatmapVeriftypeLocation);
+		process_heatmaps("veriftype","stats", heatmapVeriftypeStat);
+		process_heatmaps("veriftype","Months", heatmapVeriftypeMonth);
+		process_heatmaps("veriftype","activeTab", heatmapVeriftypeActivetab);
+		process_heatmaps("veriftype","aggregate", heatmapVeriftypeAggregate);
+
+		process_heatmaps("activeTab","Element", heatmapActivetabElement);
+		process_heatmaps("activeTab","Models", heatmapActivetabModel);
+		process_heatmaps("activeTab","locations", heatmapActivetabLocation);
+		process_heatmaps("activeTab","stats", heatmapActivetabStat);
+		process_heatmaps("activeTab","Months", heatmapActivetabMonth);
+		process_heatmaps("activeTab","veriftype", heatmapActivetabVeriftype);
+		process_heatmaps("activeTab","aggregate", heatmapActivetabAggregate);
+
+		process_heatmaps("aggregate","Element", heatmapAggregateElement);
+		process_heatmaps("aggregate","Models", heatmapAggregateModel);
+		process_heatmaps("aggregate","locations", heatmapAggregateLocation);
+		process_heatmaps("aggregate","stats", heatmapAggregateStat);
+		process_heatmaps("aggregate","Months", heatmapAggregateMonth);
+		process_heatmaps("aggregate","veriftype", heatmapAggregateVeriftype);
+		process_heatmaps("aggregate","activeTab", heatmapAggregateActivetab);
+
+
 
 	});
 	//***************************** Display ****************************************

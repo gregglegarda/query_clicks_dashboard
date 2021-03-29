@@ -92,10 +92,71 @@ function declare_processing_global_variabes(){
 	window.arrayOfAggregatePercent = [];
 
 	//2 dimensions
-	window.heatmapElementVerif =[];
+
 	window.heatmapElementModel =[];
-	window.heatmapModelLocation =[];
-	window.heatmapModelMonth =[];
+	window.heatmapElementLocation =[];
+	window.heatmapElementStat =[];
+	window.heatmapElementMonth =[];
+	window.heatmapElementVeriftype =[];
+	window.heatmapElementActivetab =[];
+	window.heatmapElementAggregate =[];
+
+	window.heatmapModelElement=[];
+	window.heatmapModelLocation=[];
+	window.heatmapModelStat=[];
+	window.heatmapModelMonth=[];
+	window.heatmapModelVeriftype=[];
+	window.heatmapModelActivetab=[];
+	window.heatmapModelAggregate=[];
+
+	window.heatmapLocationElement=[];
+	window.heatmapLocationModel=[];
+	window.heatmapLocationStat=[];
+	window.heatmapLocationMonth=[];
+	window.heatmapLocationVeriftype=[];
+	window.heatmapLocationActivetab=[];
+	window.heatmapLocationAggregate=[];
+
+	window.heatmapStatElement=[];
+	window.heatmapStatModel=[];
+	window.heatmapStatLocation=[];
+	window.heatmapStatMonth=[];
+	window.heatmapStatVeriftype=[];
+	window.heatmapStatActivetab=[];
+	window.heatmapStatAggregate=[];
+
+	window.heatmapMonthElement=[];
+	window.heatmapMonthModel=[];
+	window.heatmapMonthLocation=[];
+	window.heatmapMonthStat=[];
+	window.heatmapMonthVeriftype=[];
+	window.heatmapMonthActivetab=[];
+	window.heatmapMonthAggregate=[];
+
+	window.heatmapVeriftypeElement=[];
+	window.heatmapVeriftypeModel=[];
+	window.heatmapVeriftypeLocation=[];
+	window.heatmapVeriftypeStat=[];
+	window.heatmapVeriftypeMonth=[];
+	window.heatmapVeriftypeActivetab=[];
+	window.heatmapVeriftypeAggregate=[];
+
+	window.heatmapActivetabElement=[];
+	window.heatmapActivetabModel=[];
+	window.heatmapActivetabLocation=[];
+	window.heatmapActivetabStat=[];
+	window.heatmapActivetabMonth=[];
+	window.heatmapActivetabVeriftype=[];
+	window.heatmapActivetabAggregate=[];
+
+	window.heatmapAggregateElement=[];
+	window.heatmapAggregateModel=[];
+	window.heatmapAggregateLocation=[];
+	window.heatmapAggregateStat=[];
+	window.heatmapAggregateMonth=[];
+	window.heatmapAggregateVeriftype=[];
+	window.heatmapAggregateActivetab=[];
+
 
 
 }

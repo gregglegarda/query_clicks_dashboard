@@ -17,20 +17,22 @@ function display_donut(divName, donutType, arrayPercent){
         hoverinfo: 'label+percent+name',
         hole: .6,
         type: 'pie',
+        size: 10,
         textposition: 'auto'
+
     }];
 
     var layout = {
         title: {
             //text: donutType + ' Query Counts',
             font: {
-                size: 15,
+                size: 10,
             }
 	    },
       annotations: [
         {
           font: {
-            size: 10
+            size: 20
           },
           showarrow: false,
           text: donutType,
@@ -38,7 +40,7 @@ function display_donut(divName, donutType, arrayPercent){
           y: 0.5
         }
       ],
-        height: 500,
+        height: 300,
         showlegend: false,
         margin: {
             l: 10,
