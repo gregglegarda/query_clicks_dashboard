@@ -75,7 +75,7 @@ function display_histogram(divName, divType, arrayPercent){
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
-		height: 300,
+		height: 350,
 		title: divType + " Counts",
 		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
 		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},

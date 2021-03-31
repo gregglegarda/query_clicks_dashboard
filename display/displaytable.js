@@ -3,7 +3,7 @@ console.log("TABLE FUNCTIONS");
 										Plotly Table Functions
 *******************************************************************************************/
 
-function display_table(data) {
+function display_table(divName, data) {
 
 
   var tableTitle = "";
@@ -78,7 +78,7 @@ function display_table(data) {
       paper_bgcolor: 'rgba(0, 0, 0, 0)'
     }
     var config = {responsive: true};
-    Plotly.newPlot('dataTable', data, layout, config);
+    Plotly.newPlot(divName, data, layout, config);
 
 
 }

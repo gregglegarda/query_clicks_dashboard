@@ -7,9 +7,22 @@ console.log("MAIN");
 //declare paths and ui outside refresh_data
 async function initialize_paths_and_ui() {
 //***************** Declaration of Paths and UI Variables **************************
-	//globaldeclarations.js script
+	//declarepathsandui.js script
 	declare_paths_global();
 	declare_ui_variabes();
+
+	//uibuttonshistory.js script
+	historyButtonsDeclare("History",containerHistoryNames,containerHistoryPosition);
+
+	//displayheatmap.js
+	heatmapButtonsDeclare("Elements",heatmapElementNames,heatmapElementNamePosition);
+	heatmapButtonsDeclare("Models",heatmapModelNames,heatmapModelNamePosition);
+	heatmapButtonsDeclare("Locations",heatmapLocationNames,heatmapLocationNamePosition);
+	heatmapButtonsDeclare("Stats",heatmapStatNames,heatmapStatNamePosition);
+	heatmapButtonsDeclare("Months",heatmapMonthNames,heatmapMonthNamePosition);
+	heatmapButtonsDeclare("Veriftypes",heatmapVeriftypeNames,heatmapVeriftypeNamePosition);
+	heatmapButtonsDeclare("Activetabs",heatmapActivetabNames,heatmapActivetabNamePosition);
+	heatmapButtonsDeclare("Aggregates",heatmapAggregateNames,heatmapAggregateNamePosition);
 }
 
 
@@ -52,6 +65,7 @@ async function refresh_data(){
 		//process ing data to be connected to front end display
 		process_raw_values();
 		process_dates("querydate");
+
 		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
 		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);
 		process_attributes("locations", arrayOfLocationNames,arrayOfLocationCounts,arrayOfLocationPercent);
@@ -60,7 +74,6 @@ async function refresh_data(){
 		process_attributes("veriftype", arrayOfVeriftypeNames,arrayOfVeriftypeCounts,arrayOfVeriftypePercent);
 		process_attributes("activeTab", arrayOfActivetabNames,arrayOfActivetabCounts,arrayOfActivetabPercent);
 		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
-
 
 		process_heatmaps("Element","Models", heatmapElementModel);
 		process_heatmaps("Element","locations", heatmapElementLocation);
@@ -125,7 +138,6 @@ async function refresh_data(){
 		process_heatmaps("aggregate","Months", heatmapAggregateMonth);
 		process_heatmaps("aggregate","veriftype", heatmapAggregateVeriftype);
 		process_heatmaps("aggregate","activeTab", heatmapAggregateActivetab);
-
 
 
 	});

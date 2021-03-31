@@ -1,7 +1,7 @@
-console.log("PREPROCESS");
+console.log("FORMATTING");
 
 /*******************************************************************************************
-										PRE PROCESS TO OBJECTS
+										FORMAT TO OBJECTS
 *******************************************************************************************/
 function convert_string_to_array_of_objects(data) {
 	console.log("convert_string_to_array_of_objects ");
@@ -19,7 +19,7 @@ function convert_string_to_array_of_objects(data) {
 
 
 /*******************************************************************************************
-										PRE PROCESS TO CSV
+										FORMAT TO CSV
 *******************************************************************************************/
 
 function export_data_to_csv(csvContent) {
@@ -58,7 +58,7 @@ function export_data_to_csv(csvContent) {
 	});
 
 }
-/********************************* PRE PROCESS TO TABLE FORMAT  ***************************************/
+/********************************* FORMAT TO TABLE FORMAT  ***************************************/
 
 function convert_array_object_to_table(array) {
 	console.log("convert_array_object_to_table");

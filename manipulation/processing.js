@@ -1,4 +1,4 @@
-console.log("PROCESS")
+console.log("PROCESSING")
 /*******************************************************************************************
 										PROCESS RAW
 *******************************************************************************************/
@@ -18,8 +18,6 @@ function process_raw_values(){
 function process_attributes(attributeType, arrayOfNames,arrayOfCounts,arrayOfPercent){
 	console.log("process_"+ attributeType);
 
-
-	//var arrayOfNames = [];
 	for (const obj of arrayOfObjectsData) {
 		stringToArray(obj, attributeType);
 		obj[attributeType].forEach(function (item, index) {
@@ -29,24 +27,14 @@ function process_attributes(attributeType, arrayOfNames,arrayOfCounts,arrayOfPer
 		});
 	}
 
-
 	//sets count of each element in an array of objects
 	for (var each of arrayOfNames) {
 			arrayOfCounts.push({ [each] : attribute_counter(attributeType, each)});
     };
 
-
-
 	//sets the average count of each element in an array of objects
 	for (var each of arrayOfNames) {
-		//each is the element name, and the valueInObjectCounter function is the count of the element
-		//[each] is a new feature to set variable as the key of object.
-		//if (attributeType == "Element"|| attributeType == "veriftype"|| attributeType == "activeTab"|| attributeType == "aggregate"){
-			//arrayOfPercent.push({[each]: non_array_attribute_counter(attributeType, each) / tempTotalOfCounts});
-		//}
-		//else {
 			arrayOfPercent.push({[each]: attribute_counter(attributeType, each) / tempTotalOfCounts});
-		//}
     };
 }
 function attribute_counter(key, value){
@@ -74,13 +62,6 @@ function stringToArray(ob, keyA){
 	}
 }
 
-
-/********************************* ELEMENTS COUNTER ***************************************/
-// counter function for counts of each element because its a string instead of an array
-function non_array_attribute_counter(key, value){
-	let count = arrayOfObjectsData.filter(item => item[key] === value).length;
-	return count;
-}
 
 /*******************************************************************************************
 										PROCESS DATES
@@ -153,32 +134,16 @@ console.log("process_heatmaps ("+attributetypeX+"-"+attributetypeY+ ")");
 			}
 		}
     };
-	//console.log("processed further"+JSON.stringify(tempArray));
-
-
-//putting all the x and y in an array of objects
-	//console.log(JSON.stringify(arrayOfObjectsData));
+	//putting all the x and y in an array of objects
 	for (const obj of tempArray) {
-		//console.log(objHeatmap['variable']);
-		//console.log(obj[attributetypeY]);
-
 		if(arrayHeatmapData.some(arrayHeatmapData => ((arrayHeatmapData['group'] == obj[attributetypeX])&& (arrayHeatmapData['variable'] == obj[attributetypeY])))){
 			for (const objHeatmap of arrayHeatmapData) {
-
 				if((objHeatmap['group']==obj[attributetypeX])&&(objHeatmap['variable']==obj[attributetypeY])){
 					objHeatmap['value'] = objHeatmap['value']+1;
-
 				}
 			}
 		}else{
 			arrayHeatmapData.push({"group": obj[attributetypeX], "variable": obj[attributetypeY], "value":1});
 		}
 	}
-	//console.log(JSON.stringify(arrayHeatmapData));
-
 }
-
-
-
-
-

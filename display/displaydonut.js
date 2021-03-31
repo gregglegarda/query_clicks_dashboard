@@ -40,7 +40,7 @@ function display_donut(divName, donutType, arrayPercent){
           y: 0.5
         }
       ],
-        height: 300,
+        height: 350,
         showlegend: false,
         margin: {
             l: 10,

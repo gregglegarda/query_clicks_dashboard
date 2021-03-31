@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/topbar.css">
     <link rel="stylesheet" href="assets/css/bottombar.css">
     <link rel="stylesheet" href="assets/css/snackbar.css">
+    <link rel="stylesheet" href="assets/css/csslider.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,354 +20,365 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
 
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Lato);
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ::-webkit-scrollbar {
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar-track {
+            background: none;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(74, 168, 0, 0.6);
+        }
+        ul, ol {
+            padding-left: 40px;
+        }
+        html, body {
+            height: 100%;
+            text-align: center;
+            font: 400 100% 'Raleway', 'Lato';
+            background-color: #282828;
+            color: #CCC;
+        }
+        #slider1 {
+            margin: 20px;
+            font-family: 'Lato';
+        }
 
+
+    </style>
 </head>
 <body>
 
-    <!--BUTTONS-->
-    <div class="topbar center">
-        <div class="row ">
-            <button class="button "  type="button" value="Previous Attribute" id="rotateAttributesButtonPrevious"><i class="fa fa-chevron-left"></i></button>
-            <button class="button " type="button"  id="refreshButton">Refresh Data</button>
-            <button class="button "  type="button" value="Next Attribute" id="rotateAttributesButtonNext"><i class="fa fa-chevron-right"></i></button>
-            <div id="snackbar"></div>
-            <div id = "liveNow" style="padding: 15px 32px; display: none;"><i  class="blink"> LIVE NOW</i></div>
+    <div id="slider1" class="csslider">
+        <input type="radio" name="slides" id="slides_1" checked/>
+        <input type="radio" name="slides" id="slides_2" />
+        <input type="radio" name="slides" id="slides_3" />
+        <input type="radio" name="slides" id="slides_4" />
+        <input type="radio" name="slides" id="slides_5" />
+        <input type="radio" name="slides" id="slides_6" />
+        <input type="radio" name="slides" id="slides_7" />
+        <input type="radio" name="slides" id="slides_8" />
+        <input type="radio" name="slides" id="slides_9" />
+        <input type="radio" name="slides" id="slides_10" />
+        <ul>
+            <li><!--MAIN-->
+                        <div class="row" style="margin: auto;" id="snapshotContainer" >
+                            <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard" >
+                                <div id='todayscountsDonut' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                <div id='averagedailycountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                <div id='overallcountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                <div class = "roundedcard" style="padding: 20px; color:black;">
+                                        Toggle History and Table
+                                        <button class="button "  type="button"  id="rotateHistoryButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                        <button class="button "  type="button"  id="rotateHistoryButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+
+                            </div>
+                            <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                <div id='lineChartHistory' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                <div id='tableHistory' class = " roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                            </div>
+                        </div>
+            </li>
+            <li><!--ELEMENTS-->
+                        <div id="elementsContainer" >
+                                <div class="row" style="margin: auto;">
+                                          <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                            <div id='elementDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                          <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                              <div id='elementHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                </div>
+                                <div class="row"  style="margin: auto;">
+                                            <div class=" col-md-6 col-lg-6 col-xl-6  roundedgroupcard " style="display: inline;">
+                                                <div id='heatmapElementModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                <div id='heatmapElementAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                             </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                <button class="button "  type="button"  id="rotateElementsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                <button class="button "  type="button"  id="rotateElementsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                              </div>
+
+                        </div>
+            </li>
+            <li><!--MODELS-->
+                        <div id="modelsContainer" >
+                                <div class="row" style="margin: auto;">
+                                      <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                        <div id='modelDonut' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                      </div>
+                                      <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                            <div id='modelHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                      </div>
+                                </div>
+                                <div class="row"  style="margin: auto;">
+                                          <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                              <div id='heatmapModelElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              <div id='heatmapModelAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                <button class="button "  type="button"  id="rotateModelsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                <button class="button "  type="button"  id="rotateModelsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                </div>
+                        </div>
+            </li>
+            <li><!--LOCATIONS-->
+                        <div id="locationsContainer" >
+                                    <div class="row" style="margin: auto;">
+                                          <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                            <div id='locationDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                          <div class="ccol-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                <div id='locationHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapLocationElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapLocationAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                <button class="button "  type="button"  id="rotateLocationsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                  <button class="button "  type="button"  id="rotateLocationsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                        </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--STATS-->
+                        <div  id="statsContainer" >
+                                    <div class="row" style="margin: auto;">
+                                          <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                            <div id='statDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                          <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                <div id='statHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapStatElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapStatAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  </div>
+
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                <button class="button "  type="button"  id="rotateStatsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                  <button class="button "  type="button"  id="rotateStatsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--MONTHS-->
+                        <div  id="monthsContainer" >
+                                    <div class="row" style="margin: auto;">
+                                          <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                            <div id='monthDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                          <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                <div id='monthHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                          </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapMonthElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapMonthAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                 </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                 <button class="button "  type="button"  id="rotateMonthsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                  <button class="button "  type="button"  id="rotateMonthsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--VERIF TYPES-->
+                        <div id="veriftypesContainer" >
+                                    <div class="row" style="margin: auto;">
+                                             <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                                <div id='veriftypeDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                              <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                    <div id='veriftypeHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapVeriftypeElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapVeriftypeAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  </div>
+
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                    <button class="button "  type="button"  id="rotateVeriftypesHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                  <button class="button "  type="button"  id="rotateVeriftypesHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--ACTIVE TAB-->
+                        <div  id="activetabsContainer" >
+                                    <div class="row" style="margin: auto;">
+                                              <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                                <div id='activetabDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                              <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                    <div id='activetabHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapActivetabElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapActivetabAggregate' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                    <button class="button "  type="button"  id="rotateActivetabsHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                  <button class="button "  type="button"  id="rotateActivetabsHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--AGGREGATES-->
+                        <div  id="aggregatesContainer" >
+                                    <div class="row" style="margin: auto;">
+                                              <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
+                                                <div id='aggregateDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                              <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
+                                                    <div id='aggregateHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                              </div>
+                                    </div>
+                                    <div class="row"  style="margin: auto;">
+                                              <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                  <div id='heatmapAggregateElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateModel' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateLocation' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateStat' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateMonth' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateVeriftype' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  <div id='heatmapAggregateActivetab' class = "roundedcard" style="display: none;"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                                  </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 roundedgroupcard " >
+                                                    HEATMAP CONTROLS
+                                                <button class="button "  type="button"  id="rotateAggregatesHeatmapButtonPrevious"><i class="fa fa-chevron-left"></i></button>
+                                                <button class="button "  type="button"  id="rotateAggregatesHeatmapButtonNext"><i class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                    </div>
+                        </div>
+            </li>
+            <li><!--EXTRA-->
+                        <div id="extraContainer" >
+
+                                  <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
+                                        <div id="todayscount">Today's Count</div>
+                                        <div id="dailyavgcount">Daily Average Count</div>
+                                        <div id="overallcount">Over All Count</div>
+                                  </div>
+                        </div>
+            </li>
+        </ul>
+        <div class="arrows">
+            <label for="slides_1"></label>
+            <label for="slides_2"></label>
+            <label for="slides_3"></label>
+            <label for="slides_4"></label>
+            <label for="slides_5"></label>
+            <label for="slides_6"></label>
+            <label for="slides_7"></label>
+            <label for="slides_8"></label>
+            <label for="slides_9"></label>
+            <label for="slides_10"></label>
+        </div>
+        <div class="navigation">
+            <div>
+                <label for="slides_1"></label>
+                <label for="slides_2"></label>
+                <label for="slides_3"></label>
+                <label for="slides_4"></label>
+                <label for="slides_5"></label>
+                <label for="slides_6"></label>
+                <label for="slides_7"></label>
+                <label for="slides_8"></label>
+                <label for="slides_9"></label>
+                <label for="slides_10"></label>
+            </div>
         </div>
     </div>
-
-
-
-    <div class = "container">
-
-        <!--MAIN-->
-
-        <div class="row" id="snapshotContainer" >
-            <div class="col-md-3 col-lg-3 col-xl-3 roundedgroupcard " >
-                <div id='todayscountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id='averagedailycountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id='overallcountsDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-            </div>
-            <div class="col-md-9 col-lg-9 col-xl-9 roundedgroupcard " >
-                <div id='querydateLine' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 roundedgroupcard " >
-                <div id='dataTable' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-            </div>
-
-
-        </div>
-
-        <!--ELEMENTS-->
-        <div class="row" id="elementsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='elementDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='elementHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapElementAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--MODELS-->
-        <div class="row" id="modelsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='modelDonut' class = " roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='modelHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapModelAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--LOCATIONS-->
-        <div class="row" id="locationsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='locationDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='locationHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapLocationAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--STATS-->
-        <div class="row"  id="statsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='statDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='statHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapStatAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--MONTHS-->
-        <div class="row"  id="monthsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='monthDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='monthHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMonthAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--VERIF TYPES-->
-        <div class="row" id="veriftypesContainer" style="display: none;">
-         <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='veriftypeDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='veriftypeHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapVeriftypeAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--ACTIVE TAB-->
-        <div class="row" id="activetabsContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='activetabDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='activetabHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapActivetabAggregate' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--AGGREGATES-->
-        <div class="row" id="aggregatesContainer" style="display: none;">
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='aggregateDonut' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id='aggregateHistogram' class = "roundedcard"><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateElement' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateModel' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateStat' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateVeriftype' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapAggregateActivetab' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-        </div>
-
-        <!--EXTRA-->
-        <div class="row" id="extraContainer" style="display: none;">
-
-
-
-
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMoasddelLocation' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-            <div id='heatmapMoasddelMonth' class = "roundedcard" ><!-- Plotly chart will be drawn inside this DIV --></div>
-          </div>
-
-
-
-          <div class="col-md-12 col-lg-6 col-xl-6 roundedgroupcard " >
-                <div id="todayscount">Today's Count</div>
-                <div id="dailyavgcount">Daily Average Count</div>
-                <div id="overallcount">Over All Count</div>
-          </div>
-        </div>
-
-    </div>
-
-
-
-
-
-    <div class="bottomnav">
-        <div class="row ">
-            <button class="button " id="darkmode">Dark Mode</button>
-        </div>
-    </div>
-
-
-
 
 <!--added scripts for this page-->
-    <script  type="text/javascript" src="data/require.js"></script>
-    <script  type="text/javascript" src="data/initialize.js"></script>
-    <script  type="text/javascript" src="data/globaldeclarations.js"></script>
-    <script  type="text/javascript" src="data/loaddata.js"></script>
-    <script  type="text/javascript" src="data/preprocess.js"></script>
-    <script  type="text/javascript" src="data/process.js"></script>
+    <script  type="text/javascript" src="declarations/declarepathsandui.js"></script>
+    <script  type="text/javascript" src="declarations/declareloadingandformatting.js"></script>
+    <script  type="text/javascript" src="declarations/declareprocessing.js"></script>
 
-    <script  type="text/javascript" src="ui/buttons.js"></script>
+    <script  type="text/javascript" src="manipulation/require.js"></script>
+    <script  type="text/javascript" src="manipulation/loading.js"></script>
+    <script  type="text/javascript" src="manipulation/formatting.js"></script>
+    <script  type="text/javascript" src="manipulation/processing.js"></script>
 
-    <script  type="text/javascript" src="display/circle.js"></script>
-    <script  type="text/javascript" src="display/line.js"></script>
-    <script  type="text/javascript" src="display/table.js"></script>
-    <script  type="text/javascript" src="display/histogram.js"></script>
-    <script  type="text/javascript" src="display/donut.js"></script>
-    <script  type="text/javascript" src="display/heatmap.js"></script>
-    <script  type="text/javascript" src="display/values.js"></script>
+    <script  type="text/javascript" src="ui/uibuttonsarrowsatributecontainer.js"></script>
+    <script  type="text/javascript" src="ui/uibuttonshistory.js"></script>
+    <script  type="text/javascript" src="ui/uibuttonsarrowsheatmap.js"></script>
+    <script  type="text/javascript" src="ui/uibuttonsrefreshlive.js"></script>
+    <script  type="text/javascript" src="ui/uihover.js"></script>
+
+    <script  type="text/javascript" src="display/displaycircle.js"></script>
+    <script  type="text/javascript" src="display/displayline.js"></script>
+    <script  type="text/javascript" src="display/displaytable.js"></script>
+    <script  type="text/javascript" src="display/displayhistogram.js"></script>
+    <script  type="text/javascript" src="display/displaydonut.js"></script>
+    <script  type="text/javascript" src="display/displayheatmap.js"></script>
+    <script  type="text/javascript" src="display/displayvalues.js"></script>
     <script  type="text/javascript" src="display/maindisplay.js"></script>
 
     <script   type="text/javascript" src="main.js"></script>
-
-
-
-
-
 
 </body>
 </html>
