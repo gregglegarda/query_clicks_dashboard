@@ -39,11 +39,11 @@ async function refresh_data(){
 	//**************************** Loading Data ********************************************
 	let myPromise2 = new Promise(function(myResolve, myReject) {
 		//load raw data into string format
-		//load_data(dataLogPath);
+		load_data(dataLogPath);
 		//load_data_0(dataLogPath);
 		//load_data_1(dataLogPath);
 		//load_data_some(dataLogPath);
-		load_data_many(dataLogPath);
+		//load_data_many(dataLogPath);
 	});
 	//***************************** Pre Processing ****************************************
 	let myPromise3 = new Promise(function(myResolve, myReject) {
@@ -64,7 +64,7 @@ async function refresh_data(){
 	let myPromise6 = new Promise(function(myResolve, myReject) {
 		//process ing data to be connected to front end display
 		process_raw_values();
-		process_dates("querydate");
+		//process_dates("querydate");
 
 		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
 		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);

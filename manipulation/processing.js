@@ -58,7 +58,15 @@ function attribute_counter(key, value){
 
 function stringToArray(ob, keyA){
 	if (typeof ob[keyA] == "string"){
-			ob[keyA] = [ob[keyA]];
+		//first remove
+		ob[keyA]= ob[keyA].split(/'/).join('');
+		ob[keyA]= ob[keyA].split(', ');
+
+
+		//change it to array
+		//ob[keyA] = [ob[keyA]];
+			console.log(ob[keyA]);
+
 	}
 }
 

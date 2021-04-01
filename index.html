@@ -22,22 +22,10 @@
 
     <style>
         @import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Lato);
+
         * {
             margin: 0;
             padding: 0;
-        }
-        ::-webkit-scrollbar {
-            width: 2px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        ::-webkit-scrollbar-track {
-            background: none;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(74, 168, 0, 0.6);
-        }
-        ul, ol {
-            padding-left: 40px;
         }
         html, body {
             height: 100%;
@@ -46,16 +34,23 @@
             background-color: #282828;
             color: #CCC;
         }
-        #slider1 {
-            margin: 20px;
-            font-family: 'Lato';
-        }
-
-
     </style>
 </head>
 <body>
 
+    <!--TOPNAV-->
+    <div class="topnav" id="myTopnav">
+          <a href="#home" class="active">Home</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="javascript:void(0);" class="icon" onclick="top_nav_responsive()">
+            <i class="fa fa-bars"></i>
+            </a>
+    </div>
+
+
+    <!--CAROUSEL-->
     <div id="slider1" class="csslider">
         <input type="radio" name="slides" id="slides_1" checked/>
         <input type="radio" name="slides" id="slides_2" />
@@ -367,10 +362,12 @@
     <script  type="text/javascript" src="ui/uibuttonshistory.js"></script>
     <script  type="text/javascript" src="ui/uibuttonsarrowsheatmap.js"></script>
     <script  type="text/javascript" src="ui/uibuttonsrefreshlive.js"></script>
+    <script  type="text/javascript" src="ui/uinavbars.js"></script>
     <script  type="text/javascript" src="ui/uihover.js"></script>
 
     <script  type="text/javascript" src="display/displaycircle.js"></script>
     <script  type="text/javascript" src="display/displayline.js"></script>
+    <script  type="text/javascript" src="display/displayscatter.js"></script>
     <script  type="text/javascript" src="display/displaytable.js"></script>
     <script  type="text/javascript" src="display/displayhistogram.js"></script>
     <script  type="text/javascript" src="display/displaydonut.js"></script>

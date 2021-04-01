@@ -72,12 +72,13 @@ function display_histogram(divName, divType, arrayPercent){
 	console.log("display_histogram (" + divName + ")");
 	var data = push_trace_to_array(arrayPercent);
 	var layout = {
+
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
 		height: 350,
 		title: divType + " Counts",
-		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
+		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false, tickformat: "digit"},
 		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
 		plot_bgcolor: 'rgba(0, 0, 0, 0)',
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'
