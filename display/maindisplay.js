@@ -97,10 +97,17 @@ function main_display(){
 		display_heatmap("heatmapAggregateStat", heatmapAggregateStat, arrayOfAggregateNames,arrayOfStatNames);
 		display_heatmap("heatmapAggregateMonth", heatmapAggregateMonth, arrayOfAggregateNames,arrayOfMonthNames);
 		display_heatmap("heatmapAggregateVeriftype", heatmapAggregateVeriftype, arrayOfAggregateNames,arrayOfVeriftypeNames);
-		display_heatmap("heatmapAggregateActivetab", heatmapAggregateActivetab, arrayOfAggregateNames,arrayOfActivetabNames,);
+		display_heatmap("heatmapAggregateActivetab", heatmapAggregateActivetab, arrayOfAggregateNames,arrayOfActivetabNames);
 
 
-
+		display_ridgeline("ridgelineExecutiontimeElement", ridgelineExecutiontimeElement, arrayOfExecutiontimes, arrayOfElementNames);
+		display_ridgeline("ridgelineExecutiontimeModel", ridgelineExecutiontimeModel, arrayOfExecutiontimes, arrayOfModelNames);
+		display_ridgeline("ridgelineExecutiontimeLocation", ridgelineExecutiontimeLocation, arrayOfExecutiontimes, arrayOfLocationNames);
+		display_ridgeline("ridgelineExecutiontimeStat", ridgelineExecutiontimeStat, arrayOfExecutiontimes, arrayOfStatNames);
+		display_ridgeline("ridgelineExecutiontimeMonth", ridgelineExecutiontimeMonth, arrayOfExecutiontimes, arrayOfMonthNames);
+		display_ridgeline("ridgelineExecutiontimeVeriftype", ridgelineExecutiontimeVeriftype, arrayOfExecutiontimes, arrayOfVeriftypeNames);
+		display_ridgeline("ridgelineExecutiontimeActivetab", ridgelineExecutiontimeActivetab, arrayOfExecutiontimes, arrayOfActivetabNames);
+		display_ridgeline("ridgelineExecutiontimeAggregate", ridgelineExecutiontimeAggregate, arrayOfExecutiontimes, arrayOfAggregateNames);
 
 
 

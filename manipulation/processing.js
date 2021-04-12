@@ -12,6 +12,19 @@ function process_raw_values(){
 }
 
 /*******************************************************************************************
+										PROCESS EXECUTION TIMES
+*******************************************************************************************/
+function process_executiontimes(attributeType, arrayExecutiontimesData){
+	console.log("process_executiontimes ("+attributeType+ ")");
+	
+	//console.log(arrayExecutiontimesData + typeof arrayExecutiontimesData);
+	for (const obj of arrayOfObjectsData) {
+		arrayExecutiontimesData.push(obj[attributeType]);
+	}
+	//console.log(arrayExecutiontimesData + typeof arrayExecutiontimesData);
+}
+
+/*******************************************************************************************
 										PROCESS ATTRIBUTES
 *******************************************************************************************/
 
@@ -20,6 +33,7 @@ function process_attributes(attributeType, arrayOfNames,arrayOfCounts,arrayOfPer
 
 	for (const obj of arrayOfObjectsData) {
 		stringToArray(obj, attributeType);
+		numberToArray(obj, attributeType);
 		obj[attributeType].forEach(function (item, index) {
   			if (!(arrayOfNames.includes(item))){
 				arrayOfNames.push(item);
@@ -58,14 +72,15 @@ function attribute_counter(key, value){
 
 function stringToArray(ob, keyA){
 	if (typeof ob[keyA] == "string"){
-		//first remove
 		ob[keyA]= ob[keyA].split(/'/).join('');
 		ob[keyA]= ob[keyA].split(', ');
 
+	}
+}
 
-		//change it to array
-		//ob[keyA] = [ob[keyA]];
-			console.log(ob[keyA]);
+function numberToArray(ob, keyA){
+	if (typeof ob[keyA] == "number"){
+		ob[keyA]= [ob[keyA]];
 
 	}
 }
@@ -121,7 +136,6 @@ function process_dates(attributeType){
 		arrayOfDateAverage.push({[Object.keys(obj)[0]]: tempTotalDates/tempPositionOfDate});
 		arrayOfCumulativeDateCounts.push({[Object.keys(obj)[0]]: tempTotalDates});
 	}
-	//console.log(JSON.stringify(arrayOfDateAverage));
 }
 
 /*******************************************************************************************
@@ -155,3 +169,42 @@ console.log("process_heatmaps ("+attributetypeX+"-"+attributetypeY+ ")");
 		}
 	}
 }
+
+
+/*******************************************************************************************
+										PROCESS RIDGELINE
+*******************************************************************************************/
+function process_ridgelines(attributetypeX,attributetypeY, arrayRidgelineData){
+console.log("process_ridgelines ("+attributetypeX+"-"+attributetypeY+ ")");
+
+	//if array type process further
+	var tempArray=[];
+	for (var object of arrayOfObjectsData) {
+		stringToArray(object, attributetypeY);
+		stringToArray(object, attributetypeX);
+		numberToArray(object, attributetypeY);
+		numberToArray(object, attributetypeX);
+		for (var elementInX of object[attributetypeX]) {
+			//console.log(object[attributetypeY]);
+			for (var elementInY of object[attributetypeY]) {
+				tempArray.push({[elementInY]: elementInX});
+				
+			}
+		}
+    };
+	//putting all the x and y in an array of objects
+	for (const obj of tempArray) {
+		//if(arrayRidgelineData.some(arrayRidgelineData => ((arrayRidgelineData['group'] == obj[attributetypeX])&& (arrayRidgelineData['variable'] == obj[attributetypeY])))){
+		//	for (const objHeatmap of arrayRidgelineData) {
+		//		if((objHeatmap['group']==obj[attributetypeX])&&(objHeatmap['variable']==obj[attributetypeY])){
+		//			objHeatmap['value'] = objHeatmap['value']+1;
+		//		}
+			//}
+		//}else{
+			arrayRidgelineData.push(obj);
+		//}
+	}
+}
+
+
+

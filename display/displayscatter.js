@@ -1,17 +1,4 @@
-console.log("VALUES SCATTER");
+console.log("SCATTER FUNCTIONS");
 /*******************************************************************************************
-										Plotly Values Functions
+										Plotly Scatter Functions
 *******************************************************************************************/
-
-function display_scatter(){
-	console.log("display_raw_values");
-
-	/********** Connect Global Value ***********/
-	// connects the global variables to the front end
-	$("#todayscount").text("Todays Count: " + todaysDateCounts.toString());
-	$("#dailyavgcount").text("Average Daily Count: " +avgNumberOfClicks.toString());
-	$("#overallcount").text("Overall Count: " + totalNumberOfClicks.toString());
-
-
-}
-

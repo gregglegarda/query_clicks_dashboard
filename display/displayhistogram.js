@@ -69,16 +69,25 @@ function push_trace_to_array(arrayPercent){
 
 /************************ plot the data on the display *************************/
 function display_histogram(divName, divType, arrayPercent){
+	var tempLegend = true;
+	if (divName == "monthHistogram"){
+		tempLegend: false
+	}
 	console.log("display_histogram (" + divName + ")");
 	var data = push_trace_to_array(arrayPercent);
 	var layout = {
-
+		showlegend: tempLegend,
 		bargap: 0.05,
 		bargroupgap: 0.2,
 		barmode: "overlay",
 		height: 350,
 		title: divType + " Counts",
-		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false, tickformat: "digit"},
+		font: {
+			family: 'Arial, monospace',
+			size: 12,
+			color: '#7f7f7f'
+		},
+		xaxis: {title: divType, mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false, tickformat: "digit", type:"category"},
 		yaxis: {title: "Count", mirror: 'ticks', linecolor: 'white',linewidth: 1, zeroline: false},
 		plot_bgcolor: 'rgba(0, 0, 0, 0)',
 		paper_bgcolor: 'rgba(0, 0, 0, 0)'

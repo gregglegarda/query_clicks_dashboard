@@ -9,7 +9,7 @@ console.log("HEATMAP FUNCTIONS");
 
 function display_heatmap(divName, data, xAxisTickLabels, yAxisTickLabels, arrayOfNamesX, arrayOfNamesY) {
 	d3.selectAll("#" + divName +" > *").remove();
-	console.log("display_heatmap (" + divName + ")");
+	//console.log("display_heatmap (" + divName + ")");
 
 // set the dimensions and margins of the graph
 	var margin = {top: 30, right: 30, bottom: 30, left: 80},
@@ -44,6 +44,8 @@ function display_heatmap(divName, data, xAxisTickLabels, yAxisTickLabels, arrayO
 	svg.append("g")
 		.attr("transform", "translate(0," + height + ")")
 		.call(d3.axisBottom(x))
+		.style("font", "12px arial")
+		.style("text-transform", "uppercase");
 
 // Build Y scales and axis:
 	var y = d3.scaleBand()
@@ -51,7 +53,9 @@ function display_heatmap(divName, data, xAxisTickLabels, yAxisTickLabels, arrayO
 		.domain(yAxisTickLabels)
 		.padding(0.01);
 	svg.append("g")
-		.call(d3.axisLeft(y));
+		.call(d3.axisLeft(y))
+		.style("font", "12px arial")
+		.style("text-transform", "uppercase");;
 
 // Build color scale
 	var myColor = d3.scaleLinear()
@@ -63,25 +67,29 @@ function display_heatmap(divName, data, xAxisTickLabels, yAxisTickLabels, arrayO
 	var tooltip = d3.select("#"+divName)
 		.append("div")
 		.style("opacity", 0)
+		.style("display", "none")
 		.attr("class", "tooltip")
 		.style("background-color", "white")
 		.style("border", "solid")
 		.style("border-width", "2px")
 		.style("border-radius", "5px")
 		.style("padding", "5px")
+		.style("cursor", "default"); 
 
 	// Three function that change the tooltip when user hover / move / leave a cell
 	var mouseover = function (d) {
 		tooltip.style("opacity", 1)
+		.style("display", null)
 	}
 	var mousemove = function (d) {
 		tooltip
 			.html("The exact value of<br>this cell is: " + d.value)
 			.style("left", (d3.mouse(this)[0] + 70) + "px")
 			.style("top", (d3.mouse(this)[1]) + "px")
+			//.style("display", "none")
 	}
 	var mouseleave = function (d) {
-		tooltip.style("opacity", 0)
+		tooltip.style("opacity", 0).style("display", "none")
 	}
 
 	// add the squares

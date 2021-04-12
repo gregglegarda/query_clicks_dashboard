@@ -44,6 +44,11 @@ function display_line(divName, divType, arrayCount, arrayAverage, cumulativeCoun
 
      var layout = {
       title: 'History',
+	  font: {
+			family: 'Arial, monospace',
+			size: 12,
+			color: '#7f7f7f'
+		},
       height: 600,
       autosize: true,
       xaxis: {mirror: 'ticks', linecolor: 'white', linewidth: 1}, //title: divType,

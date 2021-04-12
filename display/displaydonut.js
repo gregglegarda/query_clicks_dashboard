@@ -18,6 +18,9 @@ function display_donut(divName, donutType, arrayPercent){
         hole: .6,
         type: 'pie',
         size: 10,
+		marker: {
+			colors: "#inferno"
+		},
         textposition: 'auto'
 
     }];

@@ -13,6 +13,9 @@ async function initialize_paths_and_ui() {
 
 	//uibuttonshistory.js script
 	historyButtonsDeclare("History",containerHistoryNames,containerHistoryPosition);
+	
+	//uibuttonstopnavigationslider.js script
+	topnavSliderConnect();
 
 	//displayheatmap.js
 	heatmapButtonsDeclare("Elements",heatmapElementNames,heatmapElementNamePosition);
@@ -62,9 +65,11 @@ async function refresh_data(){
 	});
 	//***************************** Processing ****************************************
 	let myPromise6 = new Promise(function(myResolve, myReject) {
-		//process ing data to be connected to front end display
+		//processing data to be connected to front end display
 		process_raw_values();
-		//process_dates("querydate");
+		process_dates("querydate");
+
+		process_executiontimes("Execution time", arrayOfExecutiontimes);
 
 		process_attributes("Element", arrayOfElementNames,arrayOfElementCounts,arrayOfElementPercent);
 		process_attributes("Models", arrayOfModelNames,arrayOfModelCounts,arrayOfModelPercent);
@@ -74,6 +79,7 @@ async function refresh_data(){
 		process_attributes("veriftype", arrayOfVeriftypeNames,arrayOfVeriftypeCounts,arrayOfVeriftypePercent);
 		process_attributes("activeTab", arrayOfActivetabNames,arrayOfActivetabCounts,arrayOfActivetabPercent);
 		process_attributes("aggregate", arrayOfAggregateNames,arrayOfAggregateCounts,arrayOfAggregatePercent);
+
 
 		process_heatmaps("Element","Models", heatmapElementModel);
 		process_heatmaps("Element","locations", heatmapElementLocation);
@@ -138,6 +144,20 @@ async function refresh_data(){
 		process_heatmaps("aggregate","Months", heatmapAggregateMonth);
 		process_heatmaps("aggregate","veriftype", heatmapAggregateVeriftype);
 		process_heatmaps("aggregate","activeTab", heatmapAggregateActivetab);
+		
+		process_ridgelines("Execution time","Element", ridgelineExecutiontimeElement);
+		process_ridgelines("Execution time","Models", ridgelineExecutiontimeModel);
+		process_ridgelines("Execution time","locations", ridgelineExecutiontimeLocation);
+		process_ridgelines("Execution time","stats", ridgelineExecutiontimeStat);
+		process_ridgelines("Execution time","Months", ridgelineExecutiontimeMonth);
+		process_ridgelines("Execution time","veriftype", ridgelineExecutiontimeVeriftype);
+		
+		process_ridgelines("Execution time","activeTab", ridgelineExecutiontimeActivetab);
+		process_ridgelines("Execution time","aggregate", ridgelineExecutiontimeAggregate);
+		
+		
+		
+
 
 
 	});

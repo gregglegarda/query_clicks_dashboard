@@ -5,7 +5,7 @@ console.log("DECLARE PATHS AND UI");
 *************************************************************/
 function declare_paths_global(){
 	console.log("declare_paths_global");
-	window.dataLogPath = 'manipulation/monthlyqueries.log';
+	window.dataLogPath = 'log/monthlyqueries.log';
 	window.csvDataPath = 'manipulation/csvData.log';
 	window.convertDataToCSVFilePath = 'manipulation/convertdatatocsv.php';
 }

@@ -7,11 +7,9 @@ console.log("BUTTONS ARROWS ATTRIBUTE CONTAINER");
 
 
 $("#rotateAttributesButtonNext").click(function(){
-  	console.log("clicked");
   	rotateAttributes("right");
 });
 $("#rotateAttributesButtonPrevious").click(function(){
-  	console.log("clicked");
   	rotateAttributes("left");
 });
 
@@ -33,7 +31,6 @@ $("#rotateAttributesButtonPrevious").mouseenter(function(){
 });
 
 function rotateAttributes(arrow){
-	console.log("clicked");
   	var previousContainer = document.getElementById(containerAttributeNames[containerAttributePosition]);
 
   	if (arrow =="right"){

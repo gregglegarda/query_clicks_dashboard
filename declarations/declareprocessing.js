@@ -21,6 +21,14 @@ function declare_processing_global_variabes(){
 	window.todaysDateCounts = 0;
 	window.arrayOfDateAverage = []; // daily averages
 	window.arrayOfCumulativeDateCounts = []; // daily cumulative
+	
+	//execution times
+	
+	window.arrayOfExecutiontimes = [];
+	window.totalExecutiontime = 0; 
+	window.avgExecutiontime = 0;
+	window.tempTotalOfCountsExecutiontime = 0;
+
 
 	//elements
 	window.arrayOfElementNames = [];
@@ -138,6 +146,15 @@ function declare_processing_global_variabes(){
 	window.heatmapAggregateVeriftype=[];
 	window.heatmapAggregateActivetab=[];
 
+
+	window.ridgelineExecutiontimeElement =[];
+	window.ridgelineExecutiontimeModel =[];
+	window.ridgelineExecutiontimeLocation =[];
+	window.ridgelineExecutiontimeStat =[];
+	window.ridgelineExecutiontimeMonth =[];
+	window.ridgelineExecutiontimeVeriftype =[];
+	window.ridgelineExecutiontimeActivetab =[];
+	window.ridgelineExecutiontimeAggregate =[];
 
 
 }
